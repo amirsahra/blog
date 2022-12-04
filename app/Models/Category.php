@@ -18,4 +18,9 @@ class Category extends Model
         return $this->hasMany(Category::class,'parent_id','id')
             ->with('children');
     }
+
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
 }

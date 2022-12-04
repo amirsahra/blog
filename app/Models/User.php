@@ -50,6 +50,10 @@ class User extends Authenticatable
     public function city()
     {
         return $this->hasOne(City::class);
+    }
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 }
