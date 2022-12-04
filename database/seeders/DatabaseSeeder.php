@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         Post::factory(100)->create();
 
         $this->call(ProvinceSeeder::class);
+        $this->call(CitySeeder::class);
     }
 }
