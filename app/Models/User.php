@@ -69,8 +69,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name', 'last_name','email', 'password','nationality_code',
-        'phone','birthday','gender','military','email','avatar','province_id',
+        'first_name', 'last_name', 'email', 'password', 'nationality_code',
+        'phone', 'birthday', 'gender', 'military', 'email', 'avatar', 'province_id',
         'city_id'
     ];
 
@@ -92,6 +92,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 
     public function province()
     {
