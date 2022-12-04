@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Province extends Model
+class City extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name', 'slug'
+        'name', 'slug', 'province_id'
     ];
 
     public function user()
@@ -18,8 +18,8 @@ class Province extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function cities()
+    public function province()
     {
-        return $this->hasMany(City::class);
+        return $this->belongsTo(Province::class);
     }
 }

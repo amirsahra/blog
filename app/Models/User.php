@@ -46,4 +46,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Province::class);
     }
+
+    public function city()
+    {
+        return $this->hasOne(City::class);
+
+    }
 }
