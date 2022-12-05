@@ -15,5 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/test', function (){
+    dd(\App\Models\Post::find(10)->comments);
+});
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('post', PostController::class);
