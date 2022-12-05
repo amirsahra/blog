@@ -36,17 +36,17 @@
 <div class="hk-wrapper hk-vertical-nav">
 
     <!-- Top Navbar -->
-    @include('partials.top-navbar')
+    @include('partials.panel.top-navbar')
     <!-- /Top Navbar -->
 
     <!-- Vertical Nav -->
-    @include('partials.vertical-navbar')
+    @include('partials.panel.vertical-navbar')
     <!-- /Vertical Nav -->
 
     <!-- Setting Panel -->
 
     <!-- /Setting Panel -->
-    @include('partials.setting-panel')
+    @include('partials.panel.setting-panel')
     <!-- Main Content -->
     <div class="hk-pg-wrapper">
         <!-- Container -->
@@ -54,7 +54,7 @@
         <!-- /Container -->
 
         <!-- Footer -->
-        @include('partials.footer')
+        @include('partials.panel.footer')
         <!-- /Footer -->
     </div>
     <!-- /Main Content -->

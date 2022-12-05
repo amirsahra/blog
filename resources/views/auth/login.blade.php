@@ -20,19 +20,23 @@
                             <a class="auth-brand text-center d-block mb-20" href="#">
                                 <img class="brand-img" src="dist/img/logo-light.png" alt="brand"/>
                             </a>
-                            <form>
+                            <form method="post" action="{{route('login')}}">
+                                @csrf
                                 <h1 class="display-4 text-center mb-10">Welcome Back :)</h1>
                                 <p class="text-center mb-30">Sign in to your account and enjoy unlimited perks.</p>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Email" type="email">
+                                    <input class="form-control" placeholder="Email" type="email" name="email">
+                                    @if($errors->has('email'))
+                                        <span class="error">{{ $errors->first('email') }}</span>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input class="form-control" placeholder="Password" type="password">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><span class="feather-icon"><i data-feather="eye-off"></i></span></span>
-                                        </div>
+                                        <input class="form-control" placeholder="Password" type="password" name="password">
                                     </div>
+                                    @if($errors->has('password'))
+                                        <span class="error">{{ $errors->first('password') }}</span>
+                                    @endif
                                 </div>
                                 <div class="custom-control custom-checkbox mb-25">
                                     <input class="custom-control-input" id="same-address" type="checkbox" checked>
