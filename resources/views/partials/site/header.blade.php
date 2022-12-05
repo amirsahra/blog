@@ -24,13 +24,24 @@
                         Contact
                     </a>
 
-                    <a href="#" class="left-topbar-item">
-                        Sing up
-                    </a>
+                    @auth
+                        <form action="{{route('logout')}}" method="post">
+                            @csrf
+                            <button  href="" type="submit"  class="left-topbar-item">
+                                {{__('values.logout')}}
+                            </button>
+                        </form>
+                    @endauth
+                    @guest
+                        <a href="#" class="left-topbar-item">
+                            {{__('values.register')}}
+                        </a>
 
-                    <a href="#" class="left-topbar-item">
-                        Log in
-                    </a>
+                        <a href="#" class="left-topbar-item">
+                            {{__('values.login')}}
+                        </a>
+                    @endguest
+
                 </div>
 
                 <div class="right-topbar">
