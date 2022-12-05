@@ -41,7 +41,6 @@ class PostController extends Controller
     {
         return view('site.post',compact('post'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *
