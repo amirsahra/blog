@@ -26,7 +26,7 @@
                                 <div class="col-sm-6 col-md-4">
                                     <!-- Item latest -->
                                     <div class="m-b-45">
-                                        <a href="{{$post->slug}}" class="wrap-pic-w hov1 trans-03">
+                                        <a href="{{ route('post.show',$post->id)}}" class="wrap-pic-w hov1 trans-03">
                                             <img src="{{asset('site/images/latest-01.jpg')}}" alt="IMG">
                                         </a>
 

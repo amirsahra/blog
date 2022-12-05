@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $feature = Post::orderBy('updated_at')->take(4)->get();
+        $feature = Post::orderBy('updated_at','desc')->take(4)->get();
         $posts = Post::orderBy('created_at', 'desc')
             ->paginate(Config::get('dornicasettings.paginate.home'));
         $data = ['feature' => $feature, 'posts' => $posts];
