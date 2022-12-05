@@ -24,6 +24,7 @@ class UserSeeder extends Seeder
         User::create([
             'first_name' => 'admin',
             'last_name' => 'ADMIN',
+            'username' => 'admin',
             'nationality_code' => '1234567891',
             'phone' => '09383448367',
             'birthday' => Carbon::make('1996'),

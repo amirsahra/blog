@@ -26,6 +26,7 @@ class UserFactory extends Factory
             'first_name' => ($gender) ? $this->faker->firstNameMale() : $this->faker->firstNameFemale(),
             'last_name' => $this->faker->name(),
             'nationality_code' => $this->faker->unique()->numerify('##########'),
+            'username' => $this->faker->unique()->userName,
             'phone' => $this->faker->unique()->phoneNumber(),
             'birthday' => $this->faker->dateTimeBetween('1990-01-01', '2012-12-31'),
             'gender' => ($gender) ? 'male' : 'female',
