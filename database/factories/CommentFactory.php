@@ -16,10 +16,10 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->title(),
+            'title' => $this->faker->unique()->jobTitle(),
             'content' => $this->faker->realTextBetween(50, 100),
-            'post_id' => $this->faker->numberBetween(1,100),
-            'user_id' => $this->faker->numberBetween(1,100),
+            'post_id' => $this->faker->numberBetween(1, 100),
+            'user_id' => $this->faker->numberBetween(1, 100),
         ];
     }
 }

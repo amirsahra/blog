@@ -15,7 +15,7 @@ return [
     ],
     'post_page' => [
         'title' => 'Post',
-        'keep_me' => 'Keep me logged in',
+        'comment' => 'Leave a Comment',
         'have_account' => 'Do have an account yet? ',
         'content' => 'Sign in to your account and enjoy unlimited perks.',
     ],
