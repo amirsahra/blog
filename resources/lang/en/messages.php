@@ -7,5 +7,11 @@ return [
         'have_account' => 'Do have an account yet? ',
         'content' => 'Sign in to your account and enjoy unlimited perks.',
     ],
+    'home_page' => [
+        'title' => 'Home',
+        'keep_me' => 'Keep me logged in',
+        'have_account' => 'Do have an account yet? ',
+        'content' => 'Sign in to your account and enjoy unlimited perks.',
+    ],
 
 ];

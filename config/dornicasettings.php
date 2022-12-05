@@ -2,7 +2,8 @@
 
 return [
     'paginate' => [
-        'user' => '10',
+        'user' => 10,
+        'home' => 10,
     ],
 
 ];

@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->text('content');
             $table->string('image')->nullable();
             $table->integer('study_time');
-            $table->unsignedBigInteger('author_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
             $table->timestamps();
         });

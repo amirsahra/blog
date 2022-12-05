@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use Hekmatinasser\Verta\Verta;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;

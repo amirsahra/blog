@@ -20,7 +20,7 @@ class PostFactory extends Factory
             'slug' => str_replace(' ', '_', $postTitle),
             'content' => $this->faker->realText(),
             'study_time'=> 5,
-            'author_id'=> $this->faker->numberBetween(1,100),
+            'user_id'=> $this->faker->numberBetween(1,100),
             'category_id'=> $this->faker->numberBetween(1,20),
         ];
     }
