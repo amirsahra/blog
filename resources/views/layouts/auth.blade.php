@@ -14,6 +14,9 @@
     <link href="{{ asset('panel/vendors/jquery-toggles/css/toggles.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('panel/vendors/jquery-toggles/css/themes/toggles-light.css') }}" rel="stylesheet" type="text/css">
 
+    <!-- Daterangepicker CSS -->
+    <link href="{{asset('panel/vendors/daterangepicker/daterangepicker.css')}}" rel="stylesheet" type="text/css" />
+
     <!-- Custom CSS -->
     <link href="{{ asset('panel/dist/css/style.css') }}" rel="stylesheet" type="text/css">
 </head>
@@ -51,6 +54,11 @@
 
 <!-- FeatherIcons JavaScript -->
 <script src="{{asset('panel/dist/js/feather.min.js')}}"></script>
+
+<!-- Daterangepicker JavaScript -->
+<script src="{{asset('panel/vendors/moment/min/moment.min.js')}}"></script>
+<script src="{{asset('panel/vendors/daterangepicker/daterangepicker.js')}}"></script>
+<script src="{{asset('panel/dist/js/daterangepicker-data.js')}}"></script>
 
 <!-- Init JavaScript -->
 <script src="{{asset('panel/dist/js/init.js')}}"></script>

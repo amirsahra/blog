@@ -17,6 +17,7 @@ return [
         'keep_me' => 'Keep me logged in',
         'have_account' => 'Do have an account yet? ',
         'nationality' => 'The entered national code is incorrect.',
+        'minimum_age' => 'Your age is below the age limit to register on this site',
     ],
     'home_page' => [
         'title' => 'Home',
