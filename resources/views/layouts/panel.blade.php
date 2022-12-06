@@ -50,7 +50,14 @@
     <!-- Main Content -->
     <div class="hk-pg-wrapper">
         <!-- Container -->
-        @yield('content')
+        <div class="container mt-xl-50 mt-sm-30 mt-15">
+            <!-- Row -->
+            <div class="row">
+                <div class="col-xl-12">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
         <!-- /Container -->
 
         <!-- Footer -->

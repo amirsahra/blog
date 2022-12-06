@@ -5,6 +5,9 @@ return [
         'home_page' => [
             'title' => 'Panel',
         ],
+        'post_page' => [
+            'title' => 'Post',
+        ],
     ],
     'login_page' => [
         'title' => 'Welcome Back :)',
