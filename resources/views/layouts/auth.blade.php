@@ -66,6 +66,8 @@
 <!-- Init JavaScript -->
 <script src="{{asset('panel/dist/js/init.js')}}"></script>
 
+@yield('js')
+
 <!-- livewire JavaScript -->
 @livewireScripts
 </body>

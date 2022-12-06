@@ -116,6 +116,26 @@
 
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <div class="form-group mt-4 mb-4">
+                                        <div class="captcha">
+                                            <div class="captcha">
+                                                <span>{!! captcha_img() !!}</span>
+                                                <button type="button" class="btn btn-success btn-refresh"><i class="fa fa-refresh"></i></button>
+                                            </div>
+                                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+
+
+                                            @if ($errors->has('captcha'))
+                                                <span class="help-block">
+                                  <strong>{{ $errors->first('captcha') }}</strong></span>
+                                            @endif
+                                        </div>
+                                        </div>
+                                    </div>
+
+                                </div>
                                 <button class="btn btn-primary btn-block"
                                         type="submit">{{__('values.register')}}</button>
                                 <div class="option-sep">or</div>
@@ -128,4 +148,18 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script type="text/javascript">
+        $('#reload').click(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'reload-captcha',
+                success: function (data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
+        });
+    </script>
 @endsection

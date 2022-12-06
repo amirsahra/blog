@@ -35,6 +35,7 @@ class CreateNewUser implements CreatesNewUsers
             'military' => ['required_if:gender,male'],
             'province_id' => ['required','exists:provinces,id'],
             'city_id' => ['required','exists:cities,id'],
+            'captcha' => ['required','captcha'],
             'avatar' => ['mimes:jpeg,png,jpg,gif,svg', 'max:200'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class),],
             'password' => $this->passwordRules(),
