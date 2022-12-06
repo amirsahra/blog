@@ -15,7 +15,7 @@
                             <a class="auth-brand text-center d-block mb-20" href="{{route('home')}}">
                                 <img class="brand-img" src="{{asset('panel/dist/img/logo-light.png')}}" alt="brand"/>
                             </a>
-                            <form action="{{url('register')}}" method="post">
+                            <form action="{{url('register')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <h1 class="display-4 mb-10 text-center">{{__('messages.register_page.title')}}</h1>
                                 <div class="form-row">
@@ -54,7 +54,8 @@
                                             class="error">{{ $errors->first('username') }}</span>@endif
                                     </div>
                                     <div class="col-md-6 form-group">
-                                            <input class="form-control" type="text" name="birthday" value="{{old('birthday')}}">
+                                        <input class="form-control" type="text" name="birthday"
+                                               value="{{old('birthday')}}">
                                         @if($errors->has('birthday'))<span
                                             class="error">{{ $errors->first('birthday') }}</span>@endif
                                     </div>
@@ -79,6 +80,14 @@
                                         @if($errors->has('military'))<span
                                             class="error">{{ $errors->first('military') }}</span>@endif
                                     </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-6 form-group">
+                                        <input type="file" class="form-control-file" name="avatar">
+                                    @if($errors->has('avatar'))<span
+                                            class="error">{{ $errors->first('avatar') }}</span>@endif
+                                    </div>
+
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="{{__('values.email')}}" type="email"

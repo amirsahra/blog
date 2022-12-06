@@ -3,6 +3,7 @@
 return [
     'login' => 'Login',
     'by' => 'By',
+    'avatar' => 'Avatar',
     'category' => 'Category',
     'minute' => 'Minute',
     'comment' => 'Comment',
