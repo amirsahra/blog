@@ -30,7 +30,7 @@ class UserFactory extends Factory
             'phone' => $this->faker->unique()->phoneNumber(),
             'birthday' => $this->faker->dateTimeBetween('1990-01-01', '2012-12-31'),
             'gender' => ($gender) ? 'male' : 'female',
-            'military' => ($gender) ? $this->faker->randomElement(['end', 'exempt']) : 'not_included',
+            'military' => ($gender) ? $this->faker->randomElement(['end', 'exempt']) : null,
             'email' => $this->faker->unique()->safeEmail(),
             'avatar' => '/user.png',
             'province_id' => $province_id,

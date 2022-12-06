@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('phone')->unique();
             $table->date('birthday');
             $table->enum('gender',['female','male'])->default('male');
-            $table->enum('military',['end','exempt','doing','not_included'])->default('not_included');
+            $table->enum('military',['end','exempt','doing'])->nullable();
             $table->string('email')->unique();
             $table->string('avatar')->nullable();
             $table->unsignedBigInteger('province_id');
