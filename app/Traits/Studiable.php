@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Config;
 
 trait Studiable
 {
-
     public function calculationOfTextReadingTime(string $text)
     {
         $wordCount = str_word_count($text);
