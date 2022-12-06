@@ -1,12 +1,13 @@
 <?php
 
 return [
-    'panel'=>[
+    'panel' => [
         'home_page' => [
             'title' => 'Panel',
         ],
         'post_page' => [
             'title' => 'Post',
+            'create' => 'You can create and publish an article and site users can visit and comment on it',
         ],
     ],
     'login_page' => [

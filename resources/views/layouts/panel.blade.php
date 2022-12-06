@@ -114,6 +114,12 @@
 <!-- Toastr JS -->
 <script src="{{asset('panel/vendors/jquery-toast-plugin/dist/jquery.toast.min.js')}}"></script>
 
+<!-- Tinymce JavaScript -->
+<script src="{{asset('panel/vendors/tinymce/tinymce.min.js/')}}"></script>
+
+<!-- Tinymce Wysuhtml5 Init JavaScript -->
+<script src="{{asset('panel/dist/js/tinymce-data.js')}}"></script>
+
 <!-- Init JavaScript -->
 <script src="{{asset('panel/dist/js/init.js')}}"></script>
 <script src="{{asset('panel/dist/js/dashboard-data.js')}}"></script>

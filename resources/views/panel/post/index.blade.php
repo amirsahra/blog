@@ -6,6 +6,18 @@
 
 @section('content')
     <section class="hk-sec-wrapper">
+        <h5 class="hk-sec-title">{{__('values.create_new_post')}}</h5>
+        <p class="mb-25">{{__('messages.panel.post_page.create')}}</p>
+        <div class="row">
+            <div class="col-sm">
+                <div class="button-list">
+                    <a href="{{route('panel.post.create')}}" type="button" class="btn btn-outline-primary">{{__('values.create_new_post')}}</a>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="hk-sec-wrapper">
         <h5 class="hk-sec-title">{{__('values.posts')}}</h5>
         <div class="row">
             <div class="col-sm">
