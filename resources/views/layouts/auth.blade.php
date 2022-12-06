@@ -10,6 +10,9 @@
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="icon" href="{{asset('panel/dist/img/favicon.ico')}}" type="image/x-icon">
 
+    <!-- livewire -->
+    @livewireStyles
+
     <!-- Toggles CSS -->
     <link href="{{ asset('panel/vendors/jquery-toggles/css/toggles.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('panel/vendors/jquery-toggles/css/themes/toggles-light.css') }}" rel="stylesheet" type="text/css">
@@ -62,5 +65,8 @@
 
 <!-- Init JavaScript -->
 <script src="{{asset('panel/dist/js/init.js')}}"></script>
+
+<!-- livewire JavaScript -->
+@livewireScripts
 </body>
 </html>

@@ -24,7 +24,6 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
-
         Validator::make($input, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
@@ -34,6 +33,8 @@ class CreateNewUser implements CreatesNewUsers
             'nationality_code' => ['required', new Nationalcode, 'max:10', Rule::unique(User::class)],
             'gender' => ['required', 'in:female,male'],
             'military' => ['required_if:gender,male'],
+            'province_id' => ['required','exists:provinces,id'],
+            'city_id' => ['required','exists:cities,id'],
             'avatar' => ['mimes:jpeg,png,jpg,gif,svg', 'max:200'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class),],
             'password' => $this->passwordRules(),
@@ -53,7 +54,13 @@ class CreateNewUser implements CreatesNewUsers
         } //TODO test and refactor
 
         return User::create([
-            'name' => $input['name'],
+            'first_name' => $input['first_name'],
+            'last_name' => $input['last_name'],
+            'birthday' => $input['birthday'],
+            'username' => $input['username'],
+            'phone' => $input['phone'],
+            'nationality_code' => $input['nationality_code'],
+            'gender' => $input['gender'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
             'created_at'=> Verta::now(),

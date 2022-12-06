@@ -11,6 +11,9 @@
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="icon" href="{{asset('panel/dist/img/favicon.ico')}}" type="image/x-icon">
 
+    <!-- livewire -->
+    @livewireStyles
+
     <!-- vector map CSS -->
     <link href="{{asset('panel/vendors/vectormap/jquery-jvectormap-2.0.3.css')}}" rel="stylesheet" type="text/css" />
 
@@ -123,6 +126,10 @@
 <!-- Init JavaScript -->
 <script src="{{asset('panel/dist/js/init.js')}}"></script>
 <script src="{{asset('panel/dist/js/dashboard-data.js')}}"></script>
+
+<!-- livewire JavaScript -->
+@livewireScripts
+
 
 </body>
 

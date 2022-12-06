@@ -81,6 +81,11 @@
                                             class="error">{{ $errors->first('military') }}</span>@endif
                                     </div>
                                 </div>
+
+
+                                    <livewire:city-dropdown />
+
+
                                 <div class="form-row">
                                     <div class="col-md-6 form-group">
                                         <input type="file" class="form-control-file" name="avatar">

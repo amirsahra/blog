@@ -21,6 +21,8 @@ return [
     'register' => 'Register',
     'users' => 'Users',
     'selected_gender' => 'Selected gender',
+    'selected_city' => 'Selected City',
+    'selected_province' => 'Selected Province',
     'selected_military' => 'Selected military',
     'username' => 'Username',
     'email' => 'Email',
