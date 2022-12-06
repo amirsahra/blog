@@ -22,8 +22,12 @@ class DatabaseSeeder extends Seeder
         Post::factory(100)->create();
         Comment::factory(500)->create();
 
-        $this->call(ProvinceSeeder::class);
-        $this->call(CitySeeder::class);
-        $this->call(UserSeeder::class);
+        $this->call([
+            ProvinceSeeder::class,
+            CitySeeder::class,
+            UserSeeder::class,
+            RoleSeeder::class
+        ]);
+
     }
 }
