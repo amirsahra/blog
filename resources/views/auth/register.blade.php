@@ -15,6 +15,19 @@
                             <a class="auth-brand text-center d-block mb-20" href="{{route('home')}}">
                                 <img class="brand-img" src="{{asset('panel/dist/img/logo-light.png')}}" alt="brand"/>
                             </a>
+
+
+                            @if($errors->any())
+                                <div class="alert alert-danger">
+                                    <p><strong>Opps Something went wrong</strong></p>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach.
+                                    </ul>
+                                </div>
+                            @endif
+
                             <form action="{{url('register')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <h1 class="display-4 mb-10 text-center">{{__('messages.register_page.title')}}</h1>
@@ -85,16 +98,16 @@
                                     @if($errors->has('password'))<span
                                         class="error">{{ $errors->first('password') }}</span>@endif
                                 </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <input class="form-control" placeholder="{{__('values.confirm_password')}}"
-                                               type="password" value="{{old('confirm_password')}}"
-                                               name="confirm_password">
-                                        @if($errors->has('confirm_password'))<span
-                                            class="error">{{ $errors->first('confirm_password') }}</span>@endif
+{{--                                <div class="form-group">--}}
+{{--                                    <div class="input-group">--}}
+{{--                                        <input class="form-control" placeholder="{{__('values.confirm_password')}}"--}}
+{{--                                               type="password" value="{{old('password_confirmation')}}"--}}
+{{--                                               name="confirm_password">--}}
+{{--                                        @if($errors->has('password_confirmation'))<span--}}
+{{--                                            class="error">{{ $errors->first('password_confirmation') }}</span>@endif--}}
 
-                                    </div>
-                                </div>
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
                                 <div class="form-group mt-4 mb-4">
                                     <div class="captcha">

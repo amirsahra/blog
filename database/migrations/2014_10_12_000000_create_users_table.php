@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('nationality_code')->unique();
             $table->string('username')->unique();
             $table->string('phone')->unique();
-            $table->date('birthday')->nullable();
+            $table->string('birthday')->nullable();
             $table->enum('gender',['female','male'])->default('male');
             $table->enum('military',['end','exempt','doing'])->nullable();
             $table->string('email')->unique();

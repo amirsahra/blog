@@ -24,40 +24,43 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
-        //dd($input);
         Validator::make($input, [
             'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
             'birthday' => ['date', new MinimumAge],
             'username' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z]+$/u', Rule::unique(User::class)],
             'phone' => ['required', 'digits:11', 'regex:/(0|\+98)?([ ]|-|[()]){0,2}9[1|2|3|4]([ ]|-|[()]){0,2}(?:[0-9]([ ]|-|[()]){0,2}){8}/', Rule::unique(User::class)],
             'nationality_code' => ['required', new Nationalcode, 'max:10', Rule::unique(User::class)],
             'gender' => ['required', 'in:female,male'],
             'military' => ['required_if:gender,male'],
-            'province_id' => ['required','exists:provinces,id'],
-            'city_id' => ['required','exists:cities,id'],
+            'province_id' => ['required', 'exists:provinces,id'],
+            'city_id' => ['required', 'exists:cities,id'],
             //'captcha' => ['required','captcha'],
             'avatar' => ['mimes:jpeg,png,jpg,gif,svg', 'max:200'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class),],
-            'password' => $this->passwordRules(),
+            'password' => ['required', 'min:6'],
         ])->validate();
+
 
         $avatarPath = 'panel/avatars/';
         $avatar = $avatarPath . 'default.png';
-        if (in_array('avatar', $input)) {
+        if (array_key_exists('avatar', $input)) {
             $imageName = time() . '.' . $input['avatar']->getClientOriginalExtension();
-            $input['avatar']->image->move(public_path($avatarPath), $imageName);
+            $input['avatar']->move(public_path($avatarPath), $imageName);
             $avatar = $avatarPath . $imageName;
 
-            $img = Image::make($avatar);
+            /*$img = Image::make($avatar);
             $img->resize(400, 400, function ($const) {
                 $const->aspectRatio();
-            })->save($avatar);
+            })->save($avatar)
+            */
+            //TODO resize
         }
+
 
         return User::create([
             'first_name' => $input['first_name'],
             'last_name' => $input['last_name'],
+            //'birthday' => date('m-d-Y',$input['birthday']),
             'birthday' => $input['birthday'],
             'username' => $input['username'],
             'phone' => $input['phone'],
@@ -69,7 +72,7 @@ class CreateNewUser implements CreatesNewUsers
             'avatar' => $avatar,
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            'created_at'=> Verta::now(),
+            'created_at' => Verta::now(),
         ]);
     }
 }

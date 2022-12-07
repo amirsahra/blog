@@ -2,6 +2,7 @@
 
 return [
     'login' => 'Login',
+    'logout' => 'Logout',
     'by' => 'By',
     'avatar' => 'Avatar',
     'category' => 'Category',

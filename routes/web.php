@@ -3,6 +3,7 @@
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\PostController;
 use Illuminate\Support\Facades\Route;
+use Intervention\Image\Facades\Image;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,15 +17,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/test', function () {
+    dd(php_ini_loaded_file());
+    $avatar ='panel/avatars/default.png';
+    $img = Image::make($avatar);
+    $img->resize(400, 400, function ($const) {
+        $const->aspectRatio();
+    })->save($avatar);
 
-    //Declare the string data
-    $strdata = "Learn PHP programming from the basic ";
 
-    //Count and print the total number of words in the string data
-
-    $count = str_word_count($strdata) / 4;
-    //dd(ceil($count));
-    dd(($count));
 });
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('post', PostController::class);
