@@ -5,6 +5,7 @@ namespace App\Actions\Fortify;
 use App\Models\User;
 use App\Rules\MinimumAge;
 use App\Rules\Nationalcode;
+use App\Rules\PersianCaptcha;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -34,7 +35,7 @@ class CreateNewUser implements CreatesNewUsers
             'military' => ['required_if:gender,male'],
             'province_id' => ['required', 'exists:provinces,id'],
             'city_id' => ['required', 'exists:cities,id'],
-            //'captcha' => ['required','captcha'],
+            're_captcha' => ['required','numeric',new PersianCaptcha($input['captcha'])],
             'avatar' => ['mimes:jpeg,png,jpg,gif,svg', 'max:200'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class),],
             'password' => ['required', 'min:6'],
@@ -66,7 +67,7 @@ class CreateNewUser implements CreatesNewUsers
             'phone' => $input['phone'],
             'nationality_code' => $input['nationality_code'],
             'gender' => $input['gender'],
-            'military' => $input['military'],
+            'military' => $input['military'] ?? null,
             'province_id' => $input['province_id'],
             'city_id' => $input['city_id'],
             'avatar' => $avatar,

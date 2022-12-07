@@ -109,16 +109,30 @@
 {{--                                    </div>--}}
 {{--                                </div>--}}
 
-                                <div class="form-group mt-4 mb-4">
-                                    <div class="captcha">
-                                        <span>{!! captcha_img() !!}</span>
-                                        <button type="button" class="btn btn-danger" class="reload" id="reload">
-                                            &#x21bb;
-                                        </button>
+{{--                                <div class="form-group mt-4 mb-4">--}}
+{{--                                    <div class="captcha">--}}
+{{--                                        <span>{!! captcha_img() !!}</span>--}}
+{{--                                        <button type="button" class="btn btn-danger" class="reload" id="reload">--}}
+{{--                                            &#x21bb;--}}
+{{--                                        </button>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="form-group mb-4">--}}
+{{--                                    <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">--}}
+{{--                                </div>--}}
+
+                                <div class="form-row">
+                                    <div class="col-md-6 form-group">
+                                        <input class="form-control" disabled
+                                               value="{{$captcha}}"  type="text">
+                                        <input class="form-control" value="{{$captcha}}" name="captcha" type="hidden">
                                     </div>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                                    <div class="col-md-6 form-group">
+                                        <input class="form-control" placeholder="{{__('values.captcha')}}"
+                                               name="re_captcha" type="number">
+                                        @if($errors->has('re_captcha'))<span
+                                            class="error">{{ $errors->first('re_captcha') }}</span>@endif
+                                    </div>
                                 </div>
 
                                 <button class="btn btn-primary btn-block"

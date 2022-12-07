@@ -4,6 +4,7 @@ return [
     'login' => 'Login',
     'logout' => 'Logout',
     'by' => 'By',
+    'captcha' => 'Captcha',
     'avatar' => 'Avatar',
     'category' => 'Category',
     'minute' => 'Minute',
