@@ -15,14 +15,14 @@
                             <a class="auth-brand text-center d-block mb-20" href="{{route('home')}}">
                                 <img class="brand-img" src="{{asset('panel/dist/img/logo-light.png')}}" alt="brand"/>
                             </a>
-                            <form method="post" action="{{route('login')}}">
+                            <form method="post" action="{{route('do.login')}}">
                                 @csrf
                                 <h1 class="display-4 text-center mb-10">{{__('messages.login_page.title')}}</h1>
                                 <p class="text-center mb-30">{{__('messages.login_page.content')}}</p>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="{{__('values.email')}}" type="email" name="email">
-                                    @if($errors->has('email'))
-                                        <span class="error">{{ $errors->first('email') }}</span>
+                                    <input class="form-control" placeholder="{{__('values.username')}}" type="text" name="username">
+                                    @if($errors->has('username'))
+                                        <span class="error">{{ $errors->first('username') }}</span>
                                     @endif
                                 </div>
                                 <div class="form-group">
@@ -33,6 +33,21 @@
                                         <span class="error">{{ $errors->first('password') }}</span>
                                     @endif
                                 </div>
+
+                                <div class="form-row">
+                                    <div class="col-md-6 form-group">
+                                        <input class="form-control" disabled
+                                               value="{{$captcha}}"  type="text">
+                                        <input class="form-control" value="{{$captcha}}" name="captcha" type="hidden">
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input class="form-control" placeholder="{{__('values.captcha')}}"
+                                               name="re_captcha" type="number">
+                                        @if($errors->has('re_captcha'))<span
+                                            class="error">{{ $errors->first('re_captcha') }}</span>@endif
+                                    </div>
+                                </div>
+
                                 <div class="custom-control custom-checkbox mb-25">
                                     <input class="custom-control-input" id="same-address" type="checkbox" checked>
                                     <label class="custom-control-label font-14" for="same-address">{{__('messages.login_page.keep_me')}}</label>
