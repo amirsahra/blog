@@ -9,6 +9,9 @@ return [
             'title' => 'Post',
             'create' => 'You can create and publish an article and site users can visit and comment on it',
         ],
+        'profile_page' => [
+            'title' => 'Profile',
+        ],
     ],
     'login_page' => [
         'title' => 'Welcome Back :)',

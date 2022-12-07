@@ -9,6 +9,7 @@ return [
     'category' => 'Category',
     'minute' => 'Minute',
     'comment' => 'Comment',
+    'comments' => 'Comments',
     'user' => 'User',
     'image' => 'Image',
     'selected' => 'Selected',

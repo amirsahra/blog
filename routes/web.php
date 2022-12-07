@@ -16,12 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', function () {
+Route::get('/test', function () {
 
-    dd('hi');
+    dd(auth()->check());
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [LoginController::class, 'loginForm'])->name('form.login');
-Route::post('/doLogin', [LoginController::class, 'login'])->name('do.login');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::resource('post', PostController::class);

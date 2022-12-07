@@ -101,12 +101,12 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function province()
     {
-        return $this->hasOne(Province::class);
+        return $this->belongsTo(Province::class);
     }
 
     public function city()
     {
-        return $this->hasOne(City::class);
+        return $this->belongsTo(City::class);
     }
 
     public function posts()
