@@ -24,6 +24,7 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+        //dd($input);
         Validator::make($input, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
@@ -35,7 +36,7 @@ class CreateNewUser implements CreatesNewUsers
             'military' => ['required_if:gender,male'],
             'province_id' => ['required','exists:provinces,id'],
             'city_id' => ['required','exists:cities,id'],
-            'captcha' => ['required','captcha'],
+            //'captcha' => ['required','captcha'],
             'avatar' => ['mimes:jpeg,png,jpg,gif,svg', 'max:200'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class),],
             'password' => $this->passwordRules(),
@@ -52,7 +53,7 @@ class CreateNewUser implements CreatesNewUsers
             $img->resize(400, 400, function ($const) {
                 $const->aspectRatio();
             })->save($avatar);
-        } //TODO test and refactor
+        }
 
         return User::create([
             'first_name' => $input['first_name'],
@@ -62,6 +63,10 @@ class CreateNewUser implements CreatesNewUsers
             'phone' => $input['phone'],
             'nationality_code' => $input['nationality_code'],
             'gender' => $input['gender'],
+            'military' => $input['military'],
+            'province_id' => $input['province_id'],
+            'city_id' => $input['city_id'],
+            'avatar' => $avatar,
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
             'created_at'=> Verta::now(),

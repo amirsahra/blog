@@ -60,29 +60,8 @@
                                             class="error">{{ $errors->first('birthday') }}</span>@endif
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="col-md-6 form-group">
-                                        <select class="form-control custom-select mt-15" name="gender">
-                                            <option selected="">{{__('values.selected_gender')}}</option>
-                                            <option value="female">{{__('values.female')}}</option>
-                                            <option value="male">{{__('values.male')}}</option>
-                                        </select>
-                                        @if($errors->has('gender'))<span
-                                            class="error">{{ $errors->first('gender') }}</span>@endif
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <select class="form-control custom-select mt-15" name="military">
-                                            <option disabled selected>{{__('values.selected_military')}}</option>
-                                            <option value="end">{{__('values.end')}}</option>
-                                            <option value="exempt">{{__('values.exempt')}}</option>
-                                            <option value="doing">{{__('values.doing')}}</option>
-                                        </select>
-                                        @if($errors->has('military'))<span
-                                            class="error">{{ $errors->first('military') }}</span>@endif
-                                    </div>
-                                </div>
 
-
+                                    <livewire:gender />
                                     <livewire:city-dropdown />
 
 
@@ -117,25 +96,18 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <div class="form-group mt-4 mb-4">
-                                        <div class="captcha">
-                                            <div class="captcha">
-                                                <span>{!! captcha_img() !!}</span>
-                                                <button type="button" class="btn btn-success btn-refresh"><i class="fa fa-refresh"></i></button>
-                                            </div>
-                                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
-
-
-                                            @if ($errors->has('captcha'))
-                                                <span class="help-block">
-                                  <strong>{{ $errors->first('captcha') }}</strong></span>
-                                            @endif
-                                        </div>
-                                        </div>
+                                <div class="form-group mt-4 mb-4">
+                                    <div class="captcha">
+                                        <span>{!! captcha_img() !!}</span>
+                                        <button type="button" class="btn btn-danger" class="reload" id="reload">
+                                            &#x21bb;
+                                        </button>
                                     </div>
-
                                 </div>
+                                <div class="form-group mb-4">
+                                    <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                                </div>
+
                                 <button class="btn btn-primary btn-block"
                                         type="submit">{{__('values.register')}}</button>
                                 <div class="option-sep">or</div>
