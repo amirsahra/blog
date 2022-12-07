@@ -50,6 +50,7 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->name('panel.')
+                ->middleware(['auth', 'verified'])
                 ->prefix('/panel/')
                 ->group(base_path('routes/panel.php'));
         });

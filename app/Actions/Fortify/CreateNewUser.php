@@ -7,6 +7,7 @@ use App\Rules\MinimumAge;
 use App\Rules\Nationalcode;
 use App\Rules\PersianCaptcha;
 use Hekmatinasser\Verta\Verta;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -35,7 +36,7 @@ class CreateNewUser implements CreatesNewUsers
             'military' => ['required_if:gender,male'],
             'province_id' => ['required', 'exists:provinces,id'],
             'city_id' => ['required', 'exists:cities,id'],
-            're_captcha' => ['required','numeric',new PersianCaptcha($input['captcha'])],
+            're_captcha' => ['required', 'numeric', new PersianCaptcha($input['captcha'])],
             'avatar' => ['mimes:jpeg,png,jpg,gif,svg', 'max:200'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class),],
             'password' => ['required', 'min:6'],
@@ -58,7 +59,7 @@ class CreateNewUser implements CreatesNewUsers
         }
 
 
-        return User::create([
+        $user = User::create([
             'first_name' => $input['first_name'],
             'last_name' => $input['last_name'],
             //'birthday' => date('m-d-Y',$input['birthday']),
@@ -75,5 +76,8 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
             'created_at' => Verta::now(),
         ]);
+
+        event(new Registered($user));
+        return $user;
     }
 }
