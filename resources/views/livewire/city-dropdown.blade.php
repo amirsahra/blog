@@ -6,8 +6,8 @@
             <option value="{{$province->id}}">{{$province->name}}</option>
             @endforeach
         </select>
-        @if($errors->has('province_is'))<span
-            class="error">{{ $errors->first('province_is') }}</span>@endif
+        @if($errors->has('province_id'))<span
+            class="error">{{ $errors->first('province_id') }}</span>@endif
     </div>
 
     @if(!is_null($selectedProvince))
@@ -18,8 +18,8 @@
                     <option value="{{$city->id}}">{{$city->name}}</option>
                 @endforeach
             </select>
-            @if($errors->has('gender'))<span
-                class="error">{{ $errors->first('gender') }}</span>@endif
+            @if($errors->has('city'))<span
+                class="error">{{ $errors->first('city') }}</span>@endif
         </div>
     @endif
 

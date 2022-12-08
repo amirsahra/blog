@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/test', function () {
 
-    dd(auth()->check());
+    dd(Config::get('dornicasettings.image_path.' . 'avatar'));
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');

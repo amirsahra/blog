@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\UploadImage;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
@@ -62,7 +65,7 @@ use Spatie\Permission\Traits\HasRoles;
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, UploadImage;
 
     /**
      * The attributes that are mass assignable.
@@ -72,7 +75,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'first_name', 'last_name', 'email', 'password', 'nationality_code',
         'phone', 'birthday', 'gender', 'military', 'email', 'avatar', 'province_id',
-        'city_id','username'
+        'city_id', 'username', 'password'
     ];
 
     /**
@@ -81,7 +84,6 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 
@@ -117,6 +119,19 @@ class User extends Authenticatable implements MustVerifyEmail
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function updateProfile(Request $request, $id)
+    {
+        $user = $this->query()->findOrFail($id);
+        $profileData = $request->all();
+        if (is_null($profileData['password']))
+            unset($profileData['password']);
+
+        if (array_key_exists('avatar', $profileData))
+            $profileData['avatar'] = $this->updateImage($request->avatar, 'avatar', $user->avatar);
+
+        return $user->update($profileData);
     }
 
 }

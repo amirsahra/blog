@@ -35,5 +35,14 @@ return [
         'comment' => 'Leave a Comment',
 
     ],
+    'index_method' => 'show all :name.',
+    'store_method' => ':name create successfully.',
+    'show_method' => 'show :name',
+    'update_method' => 'update :name successfully.',
+    'destroy_method' => 'delete :name successfully.',
+    'search_method' => 'Show result your search.',
+    'validate_failed' => 'The given data was invalid.',
+    'unauthorized' => 'Unauthorized - You don’t have permission to access this item.',
+    'forbidden' => 'Forbidden – You don’t have permission to access.',
 
 ];

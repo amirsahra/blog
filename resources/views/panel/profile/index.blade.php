@@ -22,7 +22,7 @@
                     <div class="inline-block dropdown">
                         <a class="dropdown-toggle no-caret" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="ion ion-ios-settings"></i></a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Edit your info</a>
+                            <a class="dropdown-item" href="{{route('panel.profile.edit')}}">Edit your info</a>
                         </div>
                     </div>
                 </div>

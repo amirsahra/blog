@@ -11,6 +11,8 @@ return [
     'comment' => 'Comment',
     'comments' => 'Comments',
     'user' => 'User',
+    'profile' => 'Profile',
+    'birthday' => 'Birthday',
     'image' => 'Image',
     'selected' => 'Selected',
     'post' => 'Post',

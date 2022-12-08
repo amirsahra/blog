@@ -29,6 +29,7 @@ class UserSeeder extends Seeder
             'phone' => '09383448367',
             'birthday' => Carbon::make('1996'),
             'gender' => 'male',
+            'avatar' => 'panel/avatars/default.png',
             'email' => 'amirhosein.sahra@gmail.com',
             'password' => Hash::make('123456789'),
             'province_id' => 27,
