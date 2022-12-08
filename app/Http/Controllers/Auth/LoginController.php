@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Traits\PersianCaptcha;
 use Auth;
 use Illuminate\Http\Request;
-use Laravel\Fortify\Http\Requests\LoginRequest;
 
 class LoginController extends Controller
 {

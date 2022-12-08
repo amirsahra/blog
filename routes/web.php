@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthCodeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\PostController;
@@ -24,4 +25,5 @@ Route::get('/test', function () {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [LoginController::class, 'loginForm'])->name('form.login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/code-verify', [AuthCodeController::class, 'codeVerifyForm'])->name('auth.code.verify');
 Route::resource('post', PostController::class);

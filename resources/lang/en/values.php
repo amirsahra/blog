@@ -19,6 +19,7 @@ return [
     'posts' => 'Posts',
     'author' => 'Author',
     'title' => 'Title',
+    'authentication_code' => 'Authentication code',
     'minutes' => 'Minutes',
     'create_new_post' => 'Create new post',
     'create_post' => 'Create post',
