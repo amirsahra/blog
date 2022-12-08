@@ -32,7 +32,7 @@
 
                                         <div class="p-t-16">
                                             <h5 class="p-b-5">
-                                                <a href="blog-detail-02.html" class="f1-m-3 cl2 hov-cl10 trans-03">
+                                                <a href="{{ route('post.show',$post->id)}}" class="f1-m-3 cl2 hov-cl10 trans-03">
                                                     {{ mb_substr($post->content,0, 50,) }}
                                                 </a>
                                             </h5>
