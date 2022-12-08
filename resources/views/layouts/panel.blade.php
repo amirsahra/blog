@@ -46,7 +46,6 @@
     @include('partials.panel.vertical-navbar')
     <!-- /Vertical Nav -->
 
-    <!-- Setting Panel -->
 
     <!-- /Setting Panel -->
     @include('partials.panel.setting-panel')

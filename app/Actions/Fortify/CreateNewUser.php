@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Rules\MinimumAge;
 use App\Rules\Nationalcode;
 use App\Rules\PersianCaptcha;
+use App\Traits\UploadImage;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
@@ -16,7 +17,7 @@ use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 class CreateNewUser implements CreatesNewUsers
 {
-    use PasswordValidationRules;
+    use PasswordValidationRules, UploadImage;
 
     /**
      * Validate and create a newly registered user.
@@ -25,6 +26,14 @@ class CreateNewUser implements CreatesNewUsers
      * @return \App\Models\User
      */
     public function create(array $input)
+    {
+        $this->validate($input);
+        $user = $this->insertUser($input);
+        //event(new Registered($user));
+        return $user;
+    }
+
+    private function validate(array $input)
     {
         Validator::make($input, [
             'first_name' => ['required', 'string', 'max:255'],
@@ -42,25 +51,14 @@ class CreateNewUser implements CreatesNewUsers
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class),],
             'password' => ['required', 'min:6'],
         ])->validate();
+    }
 
+    private function insertUser(array $input)
+    {
+        if (array_key_exists('avatar', $input))
+            $avatar = $this->uploadImage($input['avatar'], 'avatar');
 
-        $avatarPath = 'panel/avatars/';
-        $avatar = $avatarPath . 'default.png';
-        if (array_key_exists('avatar', $input)) {
-            $imageName = time() . '.' . $input['avatar']->getClientOriginalExtension();
-            $input['avatar']->move(public_path($avatarPath), $imageName);
-            $avatar = $avatarPath . $imageName;
-
-            /*$img = Image::make($avatar);
-            $img->resize(400, 400, function ($const) {
-                $const->aspectRatio();
-            })->save($avatar)
-            */
-            //TODO resize
-        }
-
-
-        $user = User::create([
+        return User::create([
             'first_name' => $input['first_name'],
             'last_name' => $input['last_name'],
             //'birthday' => date('m-d-Y',$input['birthday']),
@@ -72,13 +70,10 @@ class CreateNewUser implements CreatesNewUsers
             'military' => $input['military'] ?? null,
             'province_id' => $input['province_id'],
             'city_id' => $input['city_id'],
-            'avatar' => $avatar,
+            'avatar' => $avatar ?? null,
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
             'created_at' => Verta::now(),
         ]);
-
-        event(new Registered($user));
-        return $user;
     }
 }

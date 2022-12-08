@@ -1,18 +1,9 @@
 /*Dashboard3 Init*/
- 
-"use strict"; 
+
+"use strict";
 $(document).ready(function() {
 	/*Toaster Alert*/
-	$.toast({
-		heading: 'Well done!',
-		text: '<p>You have successfully completed level 1.</p><button class="btn btn-primary btn-sm mt-10">Play again</button>',
-		position: 'top-right',
-		loaderBg:'#88c241',
-		class: 'jq-toast-primary',
-		hideAfter: 3500, 
-		stack: 6,
-		showHideTransition: 'fade'
-	});
+
 	if($('#area_chart').length > 0) {
 		var data=[{
             period: 'Son',
@@ -44,7 +35,7 @@ $(document).ready(function() {
             iphone: 250,
             ipad: 150,
         }];
-		
+
 		var lineChart = Morris.Area({
         element: 'area_chart',
         data: data ,
@@ -74,7 +65,7 @@ $(document).ready(function() {
 				  { y: '300', a: 20, b: 40, c: 50},
 				  { y: '400', a: 50, b: 70, c: 90},
 				  { y: '500', a: 10, b: 40, c: 100},
-				  
+
 				];
 		var lineChart = Morris.Line({
 				element: 'm_chart_4',
@@ -94,14 +85,14 @@ $(document).ready(function() {
 				pointFillColors:['#fff','#fff','#fff'],
 				pointStrokeColors: ['#88c241','#97ca5a','#aed67e'],
 				lineColors: ['#88c241','#97ca5a','#aed67e'],
-			});	
+			});
 	}
 
-	
+
 });
 
 /*****E-Charts function start*****/
-var echartsConfig = function() { 
+var echartsConfig = function() {
 	if( $('#e_chart_6').length > 0 ){
 		var eChart_6 = echarts.init(document.getElementById('e_chart_6'));
 		var option5 = {
@@ -121,9 +112,9 @@ var echartsConfig = function() {
 					color: '#324148',
 					fontFamily: '"Nunito", sans-serif;',
 					fontSize: 12
-				}	
+				}
 			},
-			
+
 			grid: {
 				top: '3%',
 				left: '3%',
@@ -169,7 +160,7 @@ var echartsConfig = function() {
 					}
 				}
 			],
-		   
+
 			series: [
 				{
 					data:[420, 332, 401, 334, 400, 330, 410],
@@ -194,11 +185,11 @@ var echartsConfig = function() {
 		eChart_6.setOption(option5);
 		eChart_6.resize();
 	}
-	
+
 }
 /*****E-Charts function end*****/
 
-var sparklineLogin = function() { 
+var sparklineLogin = function() {
 	if( $('#sparkline_1').length > 0 ){
 		$("#sparkline_1").sparkline([2,4,4,6,8,5,6,4,8,6,6,2 ], {
 			type: 'bar',
@@ -207,10 +198,10 @@ var sparklineLogin = function() {
 			barWidth: '5',
 			resize: true,
 			barSpacing: '5',
-			barColor: '#88c241',	
+			barColor: '#88c241',
 			highlightSpotColor: '#88c241'
 		});
-	}	
+	}
 	if( $('#sparkline_2').length > 0 ){
 		$("#sparkline_2").sparkline([2,7,7,5,8,5,4,4,3,4,6,1 ], {
 			type: 'bar',
@@ -219,10 +210,10 @@ var sparklineLogin = function() {
 			barWidth: '5',
 			resize: true,
 			barSpacing: '5',
-			barColor: '#88c241',	
+			barColor: '#88c241',
 			highlightSpotColor: '#88c241'
 		});
-	}	
+	}
 	if( $('#sparkline_3').length > 0 ){
 		$("#sparkline_3").sparkline([9,3,3,2,8,6,4,3,3,2,6,1 ], {
 			type: 'bar',
@@ -231,7 +222,7 @@ var sparklineLogin = function() {
 			barWidth: '5',
 			resize: true,
 			barSpacing: '5',
-			barColor: '#88c241',	
+			barColor: '#88c241',
 			highlightSpotColor: '#88c241'
 		});
 	}
@@ -243,7 +234,7 @@ var sparklineLogin = function() {
 			barWidth: '5',
 			resize: true,
 			barSpacing: '5',
-			barColor: '#88c241',	
+			barColor: '#88c241',
 			highlightSpotColor: '#88c241'
 		});
 	}
@@ -256,11 +247,11 @@ $(window).on("resize", function () {
 	/*Sparkline Resize*/
 	clearTimeout(sparkResize);
 	sparkResize = setTimeout(sparklineLogin, 200);
-	
+
 	/*E-Chart Resize*/
 	clearTimeout(echartResize);
 	echartResize = setTimeout(echartsConfig, 200);
-}).resize(); 
+}).resize();
 /*****Resize function end*****/
 
 /*****Function Call start*****/
