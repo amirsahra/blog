@@ -11,7 +11,8 @@ class AuthenticationCode
     {
         if (auth()->check())
             if (is_null(auth()->user()->code_verified_at))
-                return redirect()->route('auth.code.verify');
+                return response()->redirectToRoute('auth.code.check.form');//('auth.code-verify');
+                //return redirect()->route('auth.code.check.form');
             else
                 return $next($request);
         else

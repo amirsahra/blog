@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Rules\MinimumAge;
 use App\Rules\Nationalcode;
 use App\Rules\PersianCaptcha;
+use App\Traits\HasAuthCode;
 use App\Traits\UploadImage;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Auth\Events\Registered;
@@ -17,7 +18,7 @@ use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 class CreateNewUser implements CreatesNewUsers
 {
-    use PasswordValidationRules, UploadImage;
+    use PasswordValidationRules, UploadImage,HasAuthCode;
 
     /**
      * Validate and create a newly registered user.
@@ -29,7 +30,7 @@ class CreateNewUser implements CreatesNewUsers
     {
         $this->validate($input);
         $user = $this->insertUser($input);
-        //event(new Registered($user));
+        $this->sendAuthCodeToMail($user->email,$user['authentication_code']);
         return $user;
     }
 
@@ -72,6 +73,7 @@ class CreateNewUser implements CreatesNewUsers
             'city_id' => $input['city_id'],
             'avatar' => $avatar ?? null,
             'email' => $input['email'],
+            'authentication_code' => rand(9999,99999),
             'password' => Hash::make($input['password']),
             'created_at' => Verta::now(),
         ]);

@@ -6,7 +6,7 @@ use App\Http\Controllers\Panel\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('home', [HomeController::class,'index']);
+Route::get('home', [HomeController::class,'index'])->name('home');
 Route::get('profile', [ProfileController::class,'index'])->name('profile.index');
 Route::get('profile/edit', [ProfileController::class,'edit'])->name('profile.edit');
 Route::post('profile/update/{id}', [ProfileController::class,'update'])->name('profile.update');

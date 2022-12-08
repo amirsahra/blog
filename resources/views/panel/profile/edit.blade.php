@@ -10,10 +10,6 @@
         <div class="row">
             <div class="col-sm">
 
-                @if($errors->any())
-                    <h4>{{$errors->first()}}</h4>
-                @endif
-
                 @include('partials.panel.message')
 
                 <form method="post" action="{{route('panel.profile.update',$user->id)}}" enctype="multipart/form-data">

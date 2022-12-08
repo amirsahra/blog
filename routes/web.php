@@ -22,8 +22,18 @@ Route::get('/test', function () {
     dd(Config::get('dornicasettings.image_path.' . 'avatar'));
 });
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/login', [LoginController::class, 'loginForm'])->name('form.login');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
-Route::get('/code-verify', [AuthCodeController::class, 'codeVerifyForm'])->name('auth.code.verify');
-Route::resource('post', PostController::class);
+Route::group(['middleware' => 'auth.code'], function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/login', [LoginController::class, 'loginForm'])->name('form.login');
+    Route::post('/login', [LoginController::class, 'login'])->name('login');
+    Route::resource('post', PostController::class);
+});
+
+
+Route::group(['prefix' => 'auth-code'], function () {
+    Route::get('/check', [AuthCodeController::class, 'checkForm'])->name('auth.code.check.form');
+    Route::post('/check', [AuthCodeController::class, 'check'])->name('auth.code.check');
+    Route::get('/resend', [AuthCodeController::class, 'resendForm'])->name('auth.code.resend.form');
+    Route::post('/resend', [AuthCodeController::class, 'resend'])->name('auth.code.resend');
+});
+

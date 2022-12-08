@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/';
+    public const HOME = '/auth-code/check';
 
     /**
      * The controller namespace for the application.
@@ -43,15 +43,13 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
 
-            Route::middleware('web')
+            Route::middleware(['web'])
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
 
-            Route::middleware('web')
+            Route::middleware(['web','auth.code'])
                 ->namespace($this->namespace)
                 ->name('panel.')
-                //->middleware(['auth', 'verified'])
-                ->middleware(['web','auth.code'])
                 ->prefix('/panel/')
                 ->group(base_path('routes/panel.php'));
         });

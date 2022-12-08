@@ -62,6 +62,27 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $username
+ * @property int $authentication_code
+ * @property string|null $code_verified_at
+ * @property string|null $two_factor_secret
+ * @property string|null $two_factor_recovery_codes
+ * @property string|null $two_factor_confirmed_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read mixed $full_name
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
+ * @property-read int|null $permissions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
+ * @property-read int|null $roles_count
+ * @method static \Illuminate\Database\Eloquent\Builder|User permission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder|User role($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAuthenticationCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCodeVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorConfirmedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorRecoveryCodes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUsername($value)
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -75,7 +96,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'first_name', 'last_name', 'email', 'password', 'nationality_code',
         'phone', 'birthday', 'gender', 'military', 'email', 'avatar', 'province_id',
-        'city_id', 'username', 'password'
+        'city_id', 'username', 'password','authentication_code','code_verified_at'
     ];
 
     /**
