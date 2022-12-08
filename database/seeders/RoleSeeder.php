@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
@@ -15,6 +16,7 @@ class RoleSeeder extends Seeder
     public function run()
     {
         $this->insertDefaultRole();
+        $this->assignDefaultRole();
     }
 
     public function insertDefaultRole()
@@ -23,4 +25,12 @@ class RoleSeeder extends Seeder
         Role::create(['name' => 'admin']);
         Role::create(['name' => 'member']);
     }
+
+    public function assignDefaultRole()
+    {
+        $user = User::where('username','admin')->firstOrFail();
+        $user->assignRole('super admin');
+
+    }
+
 }

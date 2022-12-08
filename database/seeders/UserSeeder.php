@@ -34,6 +34,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('123456789'),
             'province_id' => 27,
             'city_id' => 849,
+            'authentication_code' => rand(9999,99999),
+            'code_verified_at' => now(),
         ]);
 
     }

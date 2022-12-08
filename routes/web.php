@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/test', function () {
 
-    dd(Config::get('dornicasettings.image_path.' . 'avatar'));
+    dd(Config::get('dornicasettings.permissions'));
 });
 
 Route::group(['middleware' => 'auth.code'], function () {
