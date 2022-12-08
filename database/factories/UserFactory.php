@@ -36,6 +36,7 @@ class UserFactory extends Factory
             'province_id' => $province_id,
             'city_id' => $city_id,
             'email_verified_at' => now(),
+            'code_verified_at' => now(),
             'password' => Hash::make('123456789'),
             'remember_token' => Str::random(10),
         ];

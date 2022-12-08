@@ -28,6 +28,8 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('province_id');
             $table->unsignedBigInteger('city_id');
             $table->timestamp('email_verified_at')->nullable();
+            $table->bigInteger('authentication_code')->default(rand(9999,99999));
+            $table->timestamp('code_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
