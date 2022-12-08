@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -96,7 +97,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'first_name', 'last_name', 'email', 'password', 'nationality_code',
         'phone', 'birthday', 'gender', 'military', 'email', 'avatar', 'province_id',
-        'city_id', 'username', 'password','authentication_code','code_verified_at'
+        'city_id', 'username', 'password', 'authentication_code', 'code_verified_at'
     ];
 
     /**
@@ -148,6 +149,8 @@ class User extends Authenticatable implements MustVerifyEmail
         $profileData = $request->all();
         if (is_null($profileData['password']))
             unset($profileData['password']);
+        else
+            $profileData['password'] = Hash::make($profileData['password']);
 
         if (array_key_exists('avatar', $profileData))
             $profileData['avatar'] = $this->updateImage($request->avatar, 'avatar', $user->avatar);

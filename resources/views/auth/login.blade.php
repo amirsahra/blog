@@ -15,6 +15,9 @@
                             <a class="auth-brand text-center d-block mb-20" href="{{route('home')}}">
                                 <img class="brand-img" src="{{asset('panel/dist/img/logo-light.png')}}" alt="brand"/>
                             </a>
+
+                            @include('partials.panel.message')
+
                             <form method="post" action="{{route('login')}}">
                                 @csrf
                                 <h1 class="display-4 text-center mb-10">{{__('messages.login_page.title')}}</h1>
