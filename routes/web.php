@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/test', function () {
 
     $arr=['name'=>'amir','age'=>null];
-    dd(array_filter($arr));
+    dd(array_keys($arr));
 });
 
 Route::group(['middleware' => 'auth.code'], function () {

@@ -15,9 +15,18 @@ return [
     'word_length' => 200,
 
     'permissions' => [
-        'delete post', 'delete cat', 'delete comment', 'delete province', 'delete city', 'delete user',
-        'update post', 'update cat', 'update comment', 'update province', 'update city', 'update user',
-        'read post', 'read cat', 'read comment', 'read province', 'read city', 'read user',
-        'create post', 'create cat', 'create comment', 'create province', 'create city', 'create user',
+        'admin' => [
+            'delete_post', 'delete_cat', 'delete_comment', 'delete_province', 'delete_city', 'delete_user',
+            'update_post', 'update_cat', 'update_comment', 'update_province', 'update_city', 'update_user',
+            'read_post', 'read_cat', 'read comment', 'read_province', 'read_city', 'read_user',
+            'create_post', 'create_cat', 'create comment', 'create_province', 'create_city', 'create_user',
+        ],
+        'member' => [
+            'delete_post', 'delete_comment',
+            'update_post', 'update_comment',
+            'read_post', 'read comment',
+            'create_post', 'create comment',
+        ],
+
     ],
 ];

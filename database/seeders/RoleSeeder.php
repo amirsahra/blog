@@ -21,7 +21,7 @@ class RoleSeeder extends Seeder
 
     public function insertDefaultRole()
     {
-        Role::create(['name' => 'super admin']);
+        Role::create(['name' => 'super_admin']);
         Role::create(['name' => 'admin']);
         Role::create(['name' => 'member']);
     }
@@ -29,7 +29,7 @@ class RoleSeeder extends Seeder
     public function assignDefaultRole()
     {
         $user = User::where('username','admin')->firstOrFail();
-        $user->assignRole('super admin');
+        $user->assignRole('super_admin');
 
     }
 

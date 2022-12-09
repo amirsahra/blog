@@ -17,7 +17,7 @@ class PostController extends Controller
 
     public function index()
     {
-        if(auth()->user()->hasPermissionTo('read post'))
+        if(auth()->user()->hasPermissionTo('read_post'))
             $posts = Post::orderBy('created_at','desc')
                 ->paginate(Config::get('dornicasettings.paginate.post'));
         else
@@ -72,7 +72,7 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        if ((auth()->user()->id == $post->user_id) || auth()->user()->can('destroy post')){
+        if ((auth()->user()->id == $post->user_id) || auth()->user()->can('destroy_post')){
             $post->delete();
             return redirect()->back()->with('success', 'Update post successfully');
         }else{

@@ -16,7 +16,7 @@ class SuperAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!auth()->user()->hasRole('super admin'))
+        if (!auth()->user()->hasRole('super_admin'))
             return redirect()->route('panel.home');
         else
             return $next($request);

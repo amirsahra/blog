@@ -38,9 +38,9 @@ class UserController extends Controller
         return view('panel.user.edit', compact('user'));
     }
 
-    public function update(ProfileRequest $request,User $user)
+    public function update(ProfileRequest $request, User $user)
     {
-        if (auth()->user()->can('update user')){
+        if (auth()->user()->can('update_user')) {
             $user->updateProfile($request, $user->id);
             return redirect()->back()->with('success',
                 __('messages.update_method', ['name' => __('values.profile')]));
@@ -49,14 +49,4 @@ class UserController extends Controller
         return redirect()->back()->with('error', __('messages.unauthorized'));
     }
 
-    public function accessLevel(User $user)
-    {
-        $data=[
-            'user'=>$user,
-            'roles'=>Role::all(),
-            'permissions'=>Permission::all(),
-        ];
-        return view('panel.user.access', compact('data'));
-
-    }
 }
