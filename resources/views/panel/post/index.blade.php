@@ -42,9 +42,10 @@
                                     <td>
                                         <a href="{{route('post.show',$post->id)}}" class="mr-25"  target="_blank" data-toggle="tooltip" data-original-title="Show"> <i class="fa fa-eye"></i>
                                         </a>
-
-                                        <a href="#" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i
+                                        @if(auth()->user()->can('edit post') || (auth()->user()->id == $post->user_id))
+                                        <a href="{{route('panel.post.edit',$post->id)}}" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i
                                                 class="icon-pencil"></i> </a>
+                                        @endif
                                         <a href="#" data-toggle="tooltip" data-original-title="Close"> <i
                                                 class="icon-trash txt-danger"></i> </a>
                                     </td>

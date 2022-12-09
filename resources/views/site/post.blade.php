@@ -43,7 +43,10 @@
                             </div>
 
                             <div class="wrap-pic-max-w p-b-30">
+{{--
                                 <img src="{{asset('site/images/blog-list-01.jpg')}}" alt="IMG">
+--}}
+                                <img src="{{asset($data['post']->image)}}" alt="IMG">
                             </div>
 
                             <p class="f1-s-11 cl6 p-b-25">

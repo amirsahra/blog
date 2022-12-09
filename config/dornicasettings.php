@@ -9,6 +9,7 @@ return [
 
     'image_path' => [
         'avatar' => 'panel/avatars/',
+        'post_image' => 'panel/posts/',
     ],
 
     'word_length' => 200,

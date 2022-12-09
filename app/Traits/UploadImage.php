@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use App\Exceptions\ImageNotFoundException;
+use App\Models\Post;
 use Carbon\Carbon;
 use Config;
 use File;
@@ -47,10 +48,14 @@ trait UploadImage
         return $imagePath . $imageName;
     }
 
-    protected function updateImage(UploadedFile $imageKeyRequest, string $configKey, string $imagePath)
+    protected function updateImage(UploadedFile $imageKeyRequest, string $configKey,$imagePath)
     {
-        if ($this->imageExists($imagePath))
-            $this->deleteImage($imagePath);
+        if (!is_null($imagePath)) {
+            if ($this->imageExists($imagePath))
+                $this->deleteImage($imagePath);
+        }
+
         return $this->uploadImage($imageKeyRequest, $configKey);
     }
+
 }

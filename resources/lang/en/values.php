@@ -14,6 +14,7 @@ return [
     'profile' => 'Profile',
     'birthday' => 'Birthday',
     'image' => 'Image',
+    'gender' => 'Gender',
     'selected' => 'Selected',
     'post' => 'Post',
     'posts' => 'Posts',

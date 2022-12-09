@@ -6,7 +6,7 @@
 
 @section('content')
     <section class="hk-sec-wrapper">
-        <h5 class="hk-sec-title">Edit your profile</h5>
+        <h5 class="hk-sec-title">Edit <code>{{$user->full_name}}</code> pro file</h5><br>
         <div class="row">
             <div class="col-sm">
 
@@ -16,7 +16,7 @@
                     <img src="{{asset($user->avatar)}}" class="img-fluid circle" alt="img">
                 </div><br>
 
-                <form method="post" action="{{route('panel.profile.update',$user->id)}}" enctype="multipart/form-data">
+                <form method="post" action="{{route('panel.users.update',$user->id)}}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-row">
                         <div class="col-md-6 form-group">

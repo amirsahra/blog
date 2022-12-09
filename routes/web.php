@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/test', function () {
 
-    dd(Config::get('dornicasettings.permissions'));
+    dd(auth()->user()->hasRole('cvv'));
 });
 
 Route::group(['middleware' => 'auth.code'], function () {

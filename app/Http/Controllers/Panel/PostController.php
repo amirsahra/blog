@@ -6,14 +6,24 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use App\Models\Category;
 use App\Models\Post;
+use App\Traits\Studiable;
+use App\Traits\UploadImage;
 use Config;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    use UploadImage,Studiable;
+
     public function index()
     {
-        $posts = Post::orderBy('created_at')->paginate(Config::get('dornicasettings.paginate.post'));
+        if(auth()->user()->hasPermissionTo('read post'))
+            $posts = Post::orderBy('created_at','desc')
+                ->paginate(Config::get('dornicasettings.paginate.post'));
+        else
+            $posts = Post::where('user_id',auth()->user()->id)
+                ->orderBy('created_at','desc')->paginate(Config::get('dornicasettings.paginate.post'));
+
         return view('panel.post.index',compact('posts'));
     }
 
@@ -25,51 +35,50 @@ class PostController extends Controller
 
     public function store(PostRequest $postRequest)
     {
-        //
+        $post = $postRequest->all();
+
+        if ($postRequest->has('image'))
+            $post['image'] = $this->uploadImage($post['image'], 'post_image');
+
+        $post['study_time'] = $this->calculationOfTextReadingTime($post['content']);
+        $post['user_id'] = auth()->user()->id;
+        //dd($post);
+        Post::create($post);
+        return redirect()->back()->with('success', 'Create post successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function edit(Post $post)
     {
-        //
+        $data=[
+            'categories'=> $categories = Category::all(),
+            'post'=> $post
+        ];
+
+        return  view('panel.post.edit',compact('data'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update(PostRequest $postRequest,Post $post)
     {
-        //
+        $postData = $postRequest->all();
+
+        if ($postRequest->has('image'))
+            $postData['image'] = $this->updateImage($postData['image'], 'post_image',$post->image);
+
+        $post['study_time'] = $this->calculationOfTextReadingTime($post['content']);
+
+        $post->update($postData);
+        return redirect()->back()->with('success', 'Update post successfully');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function destroy(Post $post)
     {
-        //
-    }
+        if ((auth()->user()->id == $post->user_id) || auth()->user()->can('destroy post')){
+            $post->delete();
+            return redirect()->back()->with('success', 'Update post successfully');
+        }else{
+            return redirect()->back()->with('error', __('messages.unauthorized'));
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

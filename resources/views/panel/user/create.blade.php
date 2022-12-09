@@ -10,21 +10,18 @@
         <p class="mb-25">{{__('messages.panel.post_page.create')}}</p>
         <div class="row">
             <div class="col-sm">
-                <form method="post" action="{{route('panel.post.store')}}" enctype="multipart/form-data">
-
-                    @include('partials.panel.message')
-
+                <form method="post" action="{{route('panel.post.store')}}">
                     @csrf
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label for="title">{{__('values.title')}}</label>
-                            <input class="form-control" name="title" placeholder="" value="{{old('title')}}" type="text">
+                            <input class="form-control" id="title" placeholder="" value="{{old('title')}}" type="text">
                             @if($errors->has('title'))<span
                                 class="error">{{ $errors->first('title') }}</span>@endif
                         </div>
                         <div class="col-md-6 form-group">
                             <label for="slug">{{__('values.slug')}}</label>
-                            <input class="form-control" name="slug" placeholder="" value="{{old('slug')}}" type="text">
+                            <input class="form-control" id="slug" placeholder="" value="{{old('slug')}}" type="text">
                             @if($errors->has('slug'))<span
                                 class="error">{{ $errors->first('slug') }}</span>@endif
                         </div>
@@ -52,7 +49,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="content">{{__('values.content')}}</label>
-                            <textarea class="form-control mt-15" name="content" rows="5" placeholder="Textarea" >{{old('content')}}</textarea>
+                            <textarea class="form-control mt-15" id="content" rows="5" placeholder="Textarea" >{{old('content')}}</textarea>
                         </div>
                     </div>
                     <hr>
