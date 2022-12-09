@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/test', function () {
 
-    dd(auth()->user()->hasRole('cvv'));
+    $arr=['name'=>'amir','age'=>null];
+    dd(array_filter($arr));
 });
 
 Route::group(['middleware' => 'auth.code'], function () {

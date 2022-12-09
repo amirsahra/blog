@@ -26,7 +26,6 @@ class ProfileController extends Controller
 
     public function update(ProfileRequest $request, $id)
     {
-
         $user = User::findOrFail($id);
         if ($user->id == auth()->id()) {
             $user->updateProfile($request, $id);

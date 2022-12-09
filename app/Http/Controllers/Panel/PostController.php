@@ -51,10 +51,9 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $data=[
-            'categories'=> $categories = Category::all(),
+            'categories'=> Category::all(),
             'post'=> $post
         ];
-
         return  view('panel.post.edit',compact('data'));
     }
 

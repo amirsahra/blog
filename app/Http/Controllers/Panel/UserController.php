@@ -18,7 +18,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware(SuperAdmin::class)->only(['index','update']);
+        $this->middleware(SuperAdmin::class)->only(['index']);
     }
 
     public function index()
@@ -34,11 +34,12 @@ class UserController extends Controller
 
     public function update(ProfileRequest $request,$id)
     {
-        $user = User::findOrFail($id);
-        if ($user->id == auth()->id()) {
+        if (auth()->user()->can('update user')){
+            $user = User::findOrFail($id);
             $user->updateProfile($request, $id);
             return redirect()->back()->with('success',
                 __('messages.update_method', ['name' => __('values.profile')]));
+
         }
         return redirect()->back()->with('error', __('messages.unauthorized'));
     }

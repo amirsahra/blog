@@ -146,20 +146,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public function updateProfile(Request $request, $id)
     {
         $user = $this->query()->findOrFail($id);
-        $profileData = $request->all();
-        if (is_null($profileData['password']))
-            unset($profileData['password']);
-        else
+        $profileData = array_filter($request->all());
+        if (array_key_exists('password',$profileData))
             $profileData['password'] = Hash::make($profileData['password']);
 
         if (array_key_exists('avatar', $profileData))
             $profileData['avatar'] = $this->updateImage($request->avatar, 'avatar', $user->avatar);
-
-        if (is_null($profileData['gender']))
-            unset($profileData['gender']);
-
-        if (is_null($profileData['province_id']))
-            unset($profileData['province_id']);
 
         return $user->update($profileData);
     }
