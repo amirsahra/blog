@@ -27,16 +27,21 @@ class UserController extends Controller
         return view('panel.user.index', compact('users'));
     }
 
+    public function show(User $user)
+    {
+        return view('panel.user.show', compact('user'));
+
+    }
+
     public function edit(User $user)
     {
         return view('panel.user.edit', compact('user'));
     }
 
-    public function update(ProfileRequest $request,$id)
+    public function update(ProfileRequest $request,User $user)
     {
         if (auth()->user()->can('update user')){
-            $user = User::findOrFail($id);
-            $user->updateProfile($request, $id);
+            $user->updateProfile($request, $user->id);
             return redirect()->back()->with('success',
                 __('messages.update_method', ['name' => __('values.profile')]));
 

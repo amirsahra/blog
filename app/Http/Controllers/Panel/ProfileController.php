@@ -24,11 +24,10 @@ class ProfileController extends Controller
         return view('panel.profile.edit', compact('user'));
     }
 
-    public function update(ProfileRequest $request, $id)
+    public function update(ProfileRequest $request,User $user)
     {
-        $user = User::findOrFail($id);
         if ($user->id == auth()->id()) {
-            $user->updateProfile($request, $id);
+            $user->updateProfile($request, $user->id);
             return redirect()->back()->with('success',
                 __('messages.update_method', ['name' => __('values.profile')]));
         }
