@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Builder;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,5 +29,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
+
+        Builder::macro('whereLike', function(string $attribute, string $search) {
+            return $this->orWhere($attribute, 'LIKE', "%{$search}%");
+        });
+//        Builder::macro('whereIn', function(string $attribute, string $search) {
+//            return $this->where($attribute, 'IN', "{$search}");
+//        });
     }
 }

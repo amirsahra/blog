@@ -6,6 +6,7 @@ use App\Http\Controllers\Panel\HomeController;
 use App\Http\Controllers\Panel\PostController;
 use App\Http\Controllers\Panel\ProfileController;
 use App\Http\Controllers\Panel\ProvinceController;
+use App\Http\Controllers\Panel\ReportController;
 use App\Http\Controllers\Panel\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,13 +23,16 @@ Route::group(['prefix' => 'region', 'as' => 'region.'], function () {
     Route::resource('city', CityController::class);
 });
 
-Route::group(['prefix' => 'users'], function () {
-    Route::get('/', [UserController::class, 'index'])->name('users.index');
-    Route::get('show/{user}', [UserController::class, 'show'])->name('users.show');
-    Route::get('edit/{user}', [UserController::class, 'edit'])->name('users.edit');
-    Route::post('update/{user}', [UserController::class, 'update'])->name('users.update');
-    Route::get('access/{user}', [AccessLevelController::class, 'accessLevel'])->name('users.access');
-    Route::post('assign-role/{user}', [AccessLevelController::class, 'assignRole'])->name('users.assign.role');
-    Route::post('assign-permission/{user}', [AccessLevelController::class, 'assignPermission'])->name('users.assign.permission');
+Route::group(['prefix' => 'users','as'=>'users.'], function () {
+    Route::get('/', [UserController::class, 'index'])->name('index');
+    Route::get('show/{user}', [UserController::class, 'show'])->name('show');
+    Route::get('edit/{user}', [UserController::class, 'edit'])->name('edit');
+    Route::get('destroy/{user}', [UserController::class, 'destroy'])->name('destroy');
+    Route::post('update/{user}', [UserController::class, 'update'])->name('update');
+    Route::get('access/{user}', [AccessLevelController::class, 'accessLevel'])->name('access');
+    Route::post('assign-role/{user}', [AccessLevelController::class, 'assignRole'])->name('assign.role');
+    Route::post('assign-permission/{user}', [AccessLevelController::class, 'assignPermission'])->name('assign.permission');
+
+    Route::get('report/', [ReportController::class, 'index'])->name('report.index');
 });
 

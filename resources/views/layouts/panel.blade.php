@@ -17,6 +17,10 @@
     <!-- vector map CSS -->
     <link href="{{asset('panel/vendors/vectormap/jquery-jvectormap-2.0.3.css')}}" rel="stylesheet" type="text/css" />
 
+    <!-- Data Table CSS -->
+    <link href="{{asset('panel/vendors/datatables.net-dt/css/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('panel/vendors/datatables.net-responsive-dt/css/responsive.dataTables.min.css')}}" rel="stylesheet" type="text/css" />
+
     <!-- Toggles CSS -->
     <link href="{{asset('panel/vendors/jquery-toggles/css/toggles.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('panel/vendors/jquery-toggles/css/themes/toggles-light.css')}}" rel="stylesheet" type="text/css">
@@ -125,6 +129,8 @@
 <!-- Init JavaScript -->
 <script src="{{asset('panel/dist/js/init.js')}}"></script>
 <script src="{{asset('panel/dist/js/dashboard-data.js')}}"></script>
+
+@yield('js')
 
 <!-- livewire JavaScript -->
 @livewireScripts
