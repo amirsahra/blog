@@ -21,16 +21,23 @@ class UserController extends Controller
         $this->middleware(SuperAdmin::class)->only(['index']);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate(Config::get('dornicasettings.paginate.user'));
+        $user = User::query();
+        if ($request->has('search') && !is_null($request->get('search'))){
+            $user = User::query()
+                ->whereLike('first_name', $request->get('search'))
+                ->whereLike('last_name', $request->get('search'))
+                ->whereLike('username', $request->get('search'))
+                ->whereLike('email', $request->get('search'));
+        }
+        $users = $user->paginate(Config::get('dornicasettings.paginate.user'));
         return view('panel.user.index', compact('users'));
     }
 
     public function show(User $user)
     {
         return view('panel.user.show', compact('user'));
-
     }
 
     public function edit(User $user)
@@ -49,4 +56,9 @@ class UserController extends Controller
         return redirect()->back()->with('error', __('messages.unauthorized'));
     }
 
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return redirect()->back()->with('success', __('messages.unauthorized'));
+    }
 }
