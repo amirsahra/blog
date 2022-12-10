@@ -6,6 +6,7 @@ return [
         'home' => 10,
         'post' => 10,
         'region' => 10,
+        'city' => 10,
     ],
 
     'image_path' => [

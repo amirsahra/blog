@@ -3,21 +3,26 @@
 namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\SuperAdmin;
 use App\Http\Requests\CityRequest;
 use App\Models\City;
 use App\Models\Province;
+use Config;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware(SuperAdmin::class);
+    }
+
     public function index()
     {
-
+        $data = [
+            'cities' => City::orderByDesc('province_id')->paginate(Config::get('dornicasettings.paginate.city')),
+        ];
+        return view('panel.region.index-city', compact('data'));
     }
 
     public function create()
@@ -32,48 +37,26 @@ class CityController extends Controller
         return redirect()->back()->with('success', 'Create city successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function edit(City $city)
     {
-        //
+        return view('panel.region.edit-city', compact('city'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update(CityRequest $cityRequest, City $city)
     {
-        //
+        $city->update($cityRequest->only('name', 'slug'));
+        return redirect()->back()->with('success', 'Update province successfully');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(City $city)
     {
-        //
+        try {
+            $city->delete();
+            return redirect()->back()->with('success', 'Delete city successfully');
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->with('error', 'Can not delete this city');
+        }
     }
 }

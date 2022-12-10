@@ -24,10 +24,17 @@ class CityRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name'=>['required',Rule::unique('cities')],
-            'slug'=>['required',Rule::unique('cities')],
-            'province_id'=>['required',Rule::exists('provinces','id')]
-        ];
+        if (in_array($this->method(), ['PUT', 'PATCH'])) {
+            return [
+                'name'=>['required',Rule::unique('cities')->ignore($this->city)],
+                'slug'=>['required',Rule::unique('cities')->ignore($this->city)],
+            ];
+        }else{
+            return [
+                'name'=>['required',Rule::unique('cities')],
+                'slug'=>['required',Rule::unique('cities')],
+                'province_id'=>['required',Rule::exists('provinces','id')]
+            ];
+        }
     }
 }

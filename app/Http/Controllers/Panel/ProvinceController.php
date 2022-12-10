@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\SuperAdmin;
 use App\Http\Requests\ProvinceRequest;
 use App\Models\Province;
 use Config;
@@ -10,6 +11,11 @@ use Illuminate\Http\Request;
 
 class ProvinceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(SuperAdmin::class);
+    }
+
     public function index()
     {
         $data = [
@@ -31,17 +37,6 @@ class ProvinceController extends Controller
         return redirect()->back()->with('success', 'Create province successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
     public function edit(Province $province)
     {
         return view('panel.region.edit-province', compact('province'));
@@ -49,8 +44,8 @@ class ProvinceController extends Controller
 
     public function update(ProvinceRequest $provinceRequest, Province $province)
     {
-        $province->update($provinceRequest->only('name','slug'));
-        return redirect()->back()->with('success','Update province successfully');
+        $province->update($provinceRequest->only('name', 'slug'));
+        return redirect()->back()->with('success', 'Update province successfully');
     }
 
     public function destroy(Province $province)
