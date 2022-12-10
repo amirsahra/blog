@@ -34,5 +34,6 @@ Route::group(['prefix' => 'users','as'=>'users.'], function () {
     Route::post('assign-permission/{user}', [AccessLevelController::class, 'assignPermission'])->name('assign.permission');
 
     Route::get('report/', [ReportController::class, 'index'])->name('report.index');
+    Route::get('report/chart', [ReportController::class, 'chart'])->name('report.chart');
 });
 
