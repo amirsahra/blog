@@ -17,6 +17,13 @@
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link" href="{{route('panel.logs.index')}}" >
+                        <span class="feather-icon"><i data-feather="zap"></i></span>
+                        <span class="nav-link-text">Logs Activity</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#auth_drp">
                         <span class="feather-icon"><i data-feather="zap"></i></span>
                         <span class="nav-link-text">Users</span>

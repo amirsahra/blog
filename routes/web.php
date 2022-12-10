@@ -19,8 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/test', function () {
 
-    $arr=['name'=>'amir','age'=>null];
-    dd(array_keys($arr));
+    dd(\Spatie\Activitylog\Models\Activity::all());
 });
 
 Route::group(['middleware' => 'auth.code'], function () {

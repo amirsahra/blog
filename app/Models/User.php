@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -87,7 +89,7 @@ use Spatie\Permission\Traits\HasRoles;
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, UploadImage;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, UploadImage,LogsActivity;
 
     /**
      * The attributes that are mass assignable.
@@ -117,6 +119,8 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
 
     public function getFullNameAttribute()
     {
@@ -156,5 +160,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $user->update($profileData);
     }
 
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults();
+    }
 }
 

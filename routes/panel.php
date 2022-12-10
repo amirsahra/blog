@@ -3,6 +3,7 @@
 use App\Http\Controllers\Panel\AccessLevelController;
 use App\Http\Controllers\Panel\CityController;
 use App\Http\Controllers\Panel\HomeController;
+use App\Http\Controllers\Panel\LogsActivityController;
 use App\Http\Controllers\Panel\PostController;
 use App\Http\Controllers\Panel\ProfileController;
 use App\Http\Controllers\Panel\ProvinceController;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('home', [HomeController::class, 'index'])->name('home');
 Route::get('profile', [ProfileController::class, 'index'])->name('profile.index');
+Route::get('logs', [LogsActivityController::class, 'index'])->name('logs.index');
 Route::get('profile/edit/{user}', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('profile/update/{user}', [ProfileController::class, 'update'])->name('profile.update');
 Route::resource('post', PostController::class);
