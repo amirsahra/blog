@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Province;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -16,11 +17,8 @@ class UserFactory extends Factory
     public function definition()
     {
         $gender = $this->faker->boolean(); // true for male, false for female
-        $province_id = $this->faker->randomElement(['27', '3']); // 27 mazandaran , 3 ardabil
-        if ($province_id == 27)
-            $city_id = $this->faker->numberBetween(848, 998);
-        else
-            $city_id = $this->faker->numberBetween(100, 121);
+        $province_id = $this->faker->numberBetween(1,31);
+        $city_id = Province::find($province_id)->cities()->inRandomOrder()->first();
 
         return [
             'first_name' => ($gender) ? $this->faker->firstNameMale() : $this->faker->firstNameFemale(),

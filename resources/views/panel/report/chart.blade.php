@@ -22,12 +22,14 @@
     <script type="text/javascript">
 
         var labels =  {{ Js::from($labels) }};
-        var users =  {{ Js::from($users) }};
+       // var labels =  ['name','age','gender'];
+        var users =  {{ Js::from($counts) }};
+      //  var users =  [20,35,61];
 
         const data = {
             labels: labels,
             datasets: [{
-                label: 'My First dataset',
+                label: 'number of users',
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
                 data: users,
@@ -37,7 +39,12 @@
         const config = {
             type: 'line',
             data: data,
-            options: {}
+            options: {
+                responsive: true,
+                plugins: {
+
+                }
+            }
         };
 
         const myChart = new Chart(

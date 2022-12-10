@@ -30,6 +30,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('panel.users.report.index')}}">Report</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('panel.users.report.chart')}}">Line chart</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>

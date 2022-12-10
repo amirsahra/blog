@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
+use App\Models\Province;
 use App\Models\User;
+use DB;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -25,9 +27,15 @@ class ReportController extends Controller
 
     public function chart()
     {
-        $users = User::all();
-        $labels = ['q', 'a', 'z'];
-        return view('panel.report.chart', compact('users', 'labels'));
+        $results = DB::select("SELECT pro.name, count(users.province_id) as count  FROM `users` left Join provinces as pro on  users.province_id=pro.id group by pro.id");
+        $labels=array();
+        $counts=array();
+        foreach ($results as $result){
+            $labels[] = $result->name;
+            $counts[] = $result->count;
+        }
+
+        return view('panel.report.chart', compact('counts', 'labels'));
     }
 
 }

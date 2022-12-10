@@ -35,7 +35,7 @@
     </section>
 
     <section class="hk-sec-wrapper">
-        <h5 class="hk-sec-title">Export Table</h5>
+        <h5 class="hk-sec-title">Report Table</h5>
         <p class="mb-40">Use buttons: <code>['copy', 'csv', 'excel', 'pdf', 'print']</code> to add export table options.
         </p>
         <div class="row">
