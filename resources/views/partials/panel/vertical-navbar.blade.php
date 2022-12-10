@@ -10,6 +10,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{route('panel.profile.index')}}" >
+                        <span class="feather-icon"><i data-feather="zap"></i></span>
+                        <span class="nav-link-text">Profile</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#auth_drp">
                         <span class="feather-icon"><i data-feather="zap"></i></span>
                         <span class="nav-link-text">Users</span>

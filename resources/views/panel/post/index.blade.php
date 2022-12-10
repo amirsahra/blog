@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    @include('partials.panel.message')
     <section class="hk-sec-wrapper">
         <h5 class="hk-sec-title">{{__('values.create_new_post')}}</h5>
         <p class="mb-25">{{__('messages.panel.post_page.create')}}</p>
@@ -50,8 +51,11 @@
                                                data-toggle="tooltip" data-original-title="Edit"> <i
                                                     class="icon-pencil"></i> </a>
                                         @endif
-                                        <a href="#" data-toggle="tooltip" data-original-title="Close"> <i
-                                                class="icon-trash txt-danger"></i> </a>
+                                        <form action="{{ route('panel.post.destroy', $post->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" data-toggle="tooltip" data-original-title="Delete"> <i class="icon-trash txt-danger"></i> </button>
+                                        </form>
                                     </td>
                                 </tr>
 
