@@ -11,8 +11,10 @@
         <div class="row">
             <div class="col-sm">
                 <div class="button-list">
-                    <a href="{{route('panel.post.create')}}" type="button" class="btn btn-outline-primary">{{__('values.create_new_post')}}</a>
+                    <a href="{{route('panel.post.create')}}" type="button"
+                       class="btn btn-outline-primary">{{__('values.create_new_post')}}</a>
 
+                </div>
             </div>
         </div>
     </section>
@@ -40,11 +42,13 @@
                                     <td>{{$post->study_time}} {{__('values.minutes')}}</td>
 
                                     <td>
-                                        <a href="{{route('post.show',$post->id)}}" class="mr-25"  target="_blank" data-toggle="tooltip" data-original-title="Show"> <i class="fa fa-eye"></i>
+                                        <a href="{{route('post.show',$post->id)}}" class="mr-25" target="_blank"
+                                           data-toggle="tooltip" data-original-title="Show"> <i class="fa fa-eye"></i>
                                         </a>
                                         @if(auth()->user()->can('edit post') || (auth()->user()->id == $post->user_id))
-                                        <a href="{{route('panel.post.edit',$post->id)}}" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i
-                                                class="icon-pencil"></i> </a>
+                                            <a href="{{route('panel.post.edit',$post->id)}}" class="mr-25"
+                                               data-toggle="tooltip" data-original-title="Edit"> <i
+                                                    class="icon-pencil"></i> </a>
                                         @endif
                                         <a href="#" data-toggle="tooltip" data-original-title="Close"> <i
                                                 class="icon-trash txt-danger"></i> </a>
@@ -61,6 +65,6 @@
         <div class="row">
             <div class="col-sm" style="margin-top: 25px">
                 {{ $posts->links() }}
-        </div>
+            </div>
     </section>
 @endsection

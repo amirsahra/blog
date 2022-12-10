@@ -6,11 +6,11 @@
 
 @section('content')
     <section class="hk-sec-wrapper">
-        <h5 class="hk-sec-title">{{__('values.create_new_post')}}</h5>
-        <p class="mb-25">{{__('messages.panel.post_page.create')}}</p>
+        <h5 class="hk-sec-title">{{__('values.create_new_user')}}</h5>
+        <p class="mb-25">{{__('messages.panel.user_page.create')}}</p>
         <div class="row">
             <div class="col-sm">
-                <form method="post" action="{{route('panel.post.store')}}">
+                <form method="post" action="{{route('panel.user.store')}}">
                     @csrf
                     <div class="row">
                         <div class="col-md-6 form-group">

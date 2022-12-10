@@ -35,6 +35,10 @@ return [
         'comment' => 'Leave a Comment',
 
     ],
+    'region_page' => [
+        'title' => 'Region',
+    ],
+
     'index_method' => 'show all :name.',
     'store_method' => ':name create successfully.',
     'show_method' => 'show :name',
