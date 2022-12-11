@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row m-rl--1">
             <div class="col-md-6 p-rl-1 p-b-2">
-                <div class="bg-img1 size-a-3 how1 pos-relative" style="background-image: url(images/post-01.jpg);">
+                <div class="bg-img1 size-a-3 how1 pos-relative" style="background-image: url({{$feature[0]['image']}});">
                     <a href="{{ route('post.show',$feature[0]['id'])}}" class="dis-block how1-child1 trans-03"></a>
 
                     <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
@@ -38,7 +38,7 @@
                 <div class="row m-rl--1">
                     <div class="col-12 p-rl-1 p-b-2">
                         <div class="bg-img1 size-a-4 how1 pos-relative"
-                             style="background-image: url(images/post-02.jpg);">
+                             style="background-image: url({{$feature[1]['image']}});">
                             <a href="{{ route('post.show',$feature[1]['id'])}}" class="dis-block how1-child1 trans-03"></a>
 
                             <div class="flex-col-e-s s-full p-rl-25 p-tb-24">
@@ -59,7 +59,7 @@
 
                     <div class="col-sm-6 p-rl-1 p-b-2">
                         <div class="bg-img1 size-a-5 how1 pos-relative"
-                             style="background-image: url(images/post-03.jpg);">
+                             style="background-image: url({{$feature[0]['image']}});">
                             <a href="{{ route('post.show',$feature[2]['id'])}}" class="dis-block how1-child1 trans-03"></a>
 
                             <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
