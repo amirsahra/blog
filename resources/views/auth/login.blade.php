@@ -56,7 +56,7 @@
                                     <label class="custom-control-label font-14" for="same-address">{{__('messages.login_page.keep_me')}}</label>
                                 </div>
                                 <button class="btn btn-primary btn-block" type="submit">{{__('values.login')}}</button>
-                                <p class="text-center">{{__('messages.login_page.have_account')}}<a href="#">{{__('values.register')}}</a></p>
+                                <p class="text-center">{{__('messages.login_page.have_account')}}<a href="{{route('register')}}">{{__('values.register')}}</a></p>
                             </form>
                         </div>
                     </div>

@@ -59,7 +59,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="content">{{__('values.content')}}</label>
-                            <textarea class="form-control mt-15" name="content" rows="5" placeholder="Textarea" >{{$data['post']->title}}</textarea>
+                            <textarea class="form-control mt-15" name="content" rows="5" placeholder="Textarea" >{{$data['post']->content}}</textarea>
                         </div>
                     </div>
                     <hr>

@@ -27,17 +27,17 @@
                     @auth
                         <form action="{{route('logout')}}" method="post">
                             @csrf
-                            <button  href="" type="submit"  class="left-topbar-item">
+                            <button type="submit"  class="left-topbar-item">
                                 {{__('values.logout')}}
                             </button>
                         </form>
                     @endauth
                     @guest
-                        <a href="#" class="left-topbar-item">
+                        <a href="{{route('register')}}" class="left-topbar-item">
                             {{__('values.register')}}
                         </a>
 
-                        <a href="#" class="left-topbar-item">
+                        <a href="{{route('login')}}" class="left-topbar-item">
                             {{__('values.login')}}
                         </a>
                     @endguest

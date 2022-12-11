@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\SuperAdmin;
 use App\Models\Province;
 use App\Models\User;
 use DB;
@@ -10,6 +11,11 @@ use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(SuperAdmin::class);
+    }
+
     public function index(Request $request)
     {
         $user = User::query();

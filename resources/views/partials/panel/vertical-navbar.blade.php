@@ -15,14 +15,15 @@
                         <span class="nav-link-text">Profile</span>
                     </a>
                 </li>
-
+                @if(Auth::user()->hasRole('super_admin'))
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('panel.logs.index')}}" >
                         <span class="feather-icon"><i data-feather="zap"></i></span>
                         <span class="nav-link-text">Logs Activity</span>
                     </a>
                 </li>
-
+                @endif
+                @if(Auth::user()->hasRole('super_admin'))
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#auth_drp">
                         <span class="feather-icon"><i data-feather="zap"></i></span>
@@ -44,7 +45,8 @@
                         </li>
                     </ul>
                 </li>
-
+                @endif
+                @if(Auth::user()->hasPermissionTo('read_province'))
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#region_drp">
                         <span class="feather-icon"><i data-feather="zap"></i></span>
@@ -63,6 +65,7 @@
                         </li>
                     </ul>
                 </li>
+                @endif
 
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#post_drp">

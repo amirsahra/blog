@@ -17,17 +17,6 @@
                             </a>
 
 
-                            @if($errors->any())
-                                <div class="alert alert-danger">
-                                    <p><strong>Opps Something went wrong</strong></p>
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach.
-                                    </ul>
-                                </div>
-                            @endif
-
                             <form action="{{url('register')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <h1 class="display-4 mb-10 text-center">{{__('messages.register_page.title')}}</h1>
@@ -139,7 +128,7 @@
                                         type="submit">{{__('values.register')}}</button>
                                 <div class="option-sep">or</div>
                                 <p class="text-center">{{__('messages.register_page.have_account')}}<a
-                                        href="#">{{__('values.login')}}</a></p>
+                                        href="{{route('login')}}">{{__('values.login')}}</a></p>
                             </form>
                         </div>
                     </div>
