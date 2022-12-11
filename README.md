@@ -2,7 +2,7 @@
 ## simple  blog monolith
 
 
-## wHow to install
+## How to install
 
 ### Get file
 ```bash
