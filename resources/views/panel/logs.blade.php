@@ -41,7 +41,7 @@
                                         @endif
                                     </td>
                                     <td>{{$log->customer_type}}</td>
-                                    <td>{{\App\Models\User::find($log->causer_id)->full_name}}</td>
+                                    <td>{{\App\Models\User::find($log->causer_id)->full_name ?? 'deleted user'}}</td>
                                     <td>{{$log->properties}}</td>
                                     <td>{{$log->batch_uuid}}</td>
                                     <td>{{$log->created_at}}</td>

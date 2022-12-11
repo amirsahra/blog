@@ -16,7 +16,7 @@ class LogsActivityController extends Controller
 
     public function index()
     {
-        $logs = Activity::paginate('10');
+        $logs = Activity::orderBy('created_at','desc')->paginate('10');
         return view('panel.logs',compact('logs'));
     }
 }

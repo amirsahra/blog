@@ -22,7 +22,7 @@ class PostController extends Controller
                 ->paginate(Config::get('dornicasettings.paginate.post'));
         else
             $posts = Post::where('user_id',auth()->user()->id)
-                ->orderBy('created_at','desc')->paginate(Config::get('dornicasettings.paginate.post'));
+                ->orderBy('created_at','asc')->paginate(Config::get('dornicasettings.paginate.post'));
 
         return view('panel.post.index',compact('posts'));
     }

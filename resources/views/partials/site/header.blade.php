@@ -20,8 +20,8 @@
                         About
                     </a>
 
-                    <a href="#" class="left-topbar-item">
-                        Contact
+                    <a href="{{route('panel.home')}}" class="left-topbar-item">
+                        Panel
                     </a>
 
                     @auth

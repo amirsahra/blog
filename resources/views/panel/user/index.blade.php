@@ -42,6 +42,7 @@
                                 <th>{{__('values.full_name')}}</th>
                                 <th>{{__('values.username')}}</th>
                                 <th>{{__('values.gender')}}</th>
+                                <th>{{__('values.email')}}</th>
                                 <th>{{__('values.actions')}}</th>
                             </tr>
                             </thead>
@@ -51,6 +52,7 @@
                                     <td>{{$user->full_name}}</td>
                                     <td>{{$user->username}}</td>
                                     <td>{{$user->gender}}</td>
+                                    <td>{{$user->email}}</td>
 
                                     <td>
                                         <a href="{{route('panel.users.show',$user->id)}}" class="mr-25"
