@@ -22,6 +22,11 @@ class CreateRelationForAll extends Migration
             $table->foreign('province_id')->references('id')->on('provinces')->onDelete('no action');
         });
 
+        Schema::table('posts', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('categories');
+        });
+
     }
 
     /**

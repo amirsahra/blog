@@ -66,6 +66,13 @@
                     </ul>
                 </li>
                 @endif
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('panel.category.index')}}">
+                        <span class="feather-icon"><i data-feather="zap"></i></span>
+                        <span class="nav-link-text">Category</span>
+                    </a>
+                </li>
+
 
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#post_drp">

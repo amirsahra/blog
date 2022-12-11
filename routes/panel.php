@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Panel\AccessLevelController;
+use App\Http\Controllers\Panel\CategoryController;
 use App\Http\Controllers\Panel\CityController;
 use App\Http\Controllers\Panel\HomeController;
 use App\Http\Controllers\Panel\LogsActivityController;
@@ -18,6 +19,7 @@ Route::get('logs', [LogsActivityController::class, 'index'])->name('logs.index')
 Route::get('profile/edit/{user}', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('profile/update/{user}', [ProfileController::class, 'update'])->name('profile.update');
 Route::resource('post', PostController::class);
+Route::resource('category', CategoryController::class);
 
 Route::group(['prefix' => 'region', 'as' => 'region.'], function () {
     Route::get('/', [ProvinceController::class, 'index']);
