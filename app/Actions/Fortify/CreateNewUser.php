@@ -30,7 +30,7 @@ class CreateNewUser implements CreatesNewUsers
     {
         $this->validate($input);
         $user = $this->insertUser($input);
-        $this->sendAuthCodeToMail($user->email,$user['authentication_code']);
+        //$this->sendAuthCodeToMail($user->email,$user['authentication_code']);
         return $user;
     }
 
@@ -41,7 +41,10 @@ class CreateNewUser implements CreatesNewUsers
             'last_name' => ['required', 'string', 'max:255'],
             'birthday' => ['date', new MinimumAge],
             'username' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z]+$/u', Rule::unique(User::class)],
-            'phone' => ['required', 'digits:11', 'regex:/(0|\+98)?([ ]|-|[()]){0,2}9[1|2|3|4]([ ]|-|[()]){0,2}(?:[0-9]([ ]|-|[()]){0,2}){8}/', Rule::unique(User::class)],
+            'phone' => ['required', 'digits:11',
+                'regex:/(0|\+98)?([ ]|-|[()]){0,2}9[1|2|3|4]([ ]|-|[()]){0,2}(?:[0-9]([ ]|-|[()]){0,2}){8}/',
+                Rule::unique(User::class)
+            ],
             'nationality_code' => ['required', new Nationalcode, 'max:10', Rule::unique(User::class)],
             'gender' => ['required', 'in:female,male'],
             'military' => ['required_if:gender,male'],
