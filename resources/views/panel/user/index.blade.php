@@ -15,6 +15,8 @@
         </div>
     </div>
 
+    @include('partials.panel.message')
+
     <section class="hk-sec-wrapper">
         <h5 class="hk-sec-title">{{__('values.posts')}}</h5>
         <div class="row">

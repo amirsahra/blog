@@ -4,6 +4,8 @@ return [
     'login' => 'Login',
     'logout' => 'Logout',
     'by' => 'By',
+    'edit_post' => 'Edit post',
+    'update_province' => 'Update province',
     'captcha' => 'Captcha',
     'avatar' => 'Avatar',
     'category' => 'Category',

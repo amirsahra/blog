@@ -1,7 +1,7 @@
 @extends('layouts.panel')
 
 @section('title')
-    {{__('messages.panel.post_page.title')}}
+    Category
 @endsection
 
 @section('content')
@@ -25,7 +25,7 @@
                             class="error">{{ $errors->first('slug') }}</span>@endif
                     </div>
                 </div>
-                <button class="btn btn-primary" type="submit">{{__('values.create')}}</button>
+                <button class="btn btn-primary" type="submit">{{__('values.update')}}</button>
             </form>
 
         </div>

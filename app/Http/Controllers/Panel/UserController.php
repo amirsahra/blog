@@ -58,7 +58,12 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
-        $user->delete();
-        return redirect()->back()->with('success', __('messages.unauthorized'));
+        try {
+            $user->delete();
+            return redirect()->back()->with('success', 'Delete User successfully');
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->with('error', 'Can not delete this User');
+        }
+
     }
 }

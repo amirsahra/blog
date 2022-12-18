@@ -1,7 +1,7 @@
 @extends('layouts.panel')
 
 @section('title')
-    {{__('messages.panel.region_page.title')}}
+    region
 @endsection
 
 @section('content')

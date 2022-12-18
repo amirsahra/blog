@@ -1,7 +1,7 @@
 @extends('layouts.panel')
 
 @section('title')
-    {{__('messages.panel.post_page.title')}}
+    Category
 @endsection
 
 @section('content')

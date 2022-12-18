@@ -6,7 +6,7 @@
 
 @section('content')
     <section class="hk-sec-wrapper">
-        <h5 class="hk-sec-title">{{__('values.edit_new_post')}}</h5>
+        <h5 class="hk-sec-title">{{__('values.edit_post')}}</h5>
         <div class="row">
             <div class="col-sm">
                 <form method="post" action="{{route('panel.post.update',$data['post']->id)}}" enctype="multipart/form-data">
@@ -46,7 +46,7 @@
                         <div class="col-md-6 form-group">
                             <label for="category">{{__('values.category')}}</label>
                             <select class="form-control custom-select  mt-15" name="category_id">
-                                <option disabled selected>{{__('values.selected')}}</option>
+                                <option disabled >{{__('values.selected')}}</option>
                                 @foreach($data['categories'] as $category)
                                     <option value="{{$category->id}}" @if($category->id == $data['post']->id) selected @endif>{{ $category->name }}</option>
                                 @endforeach

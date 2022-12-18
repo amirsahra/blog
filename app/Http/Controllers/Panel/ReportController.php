@@ -27,7 +27,7 @@ class ReportController extends Controller
             $user = $user->where('city_id', $request->get('city_id'));
 
         //dd($user->toSql());
-        $users = $user->get();
+        $users = $user->paginate(10);
         return view('panel.report.index', compact('users'));
     }
 
