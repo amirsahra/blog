@@ -12,7 +12,8 @@ trait HasAuthCode
     {
         $details = [
             'title' => 'Mail from dornica.com',
-            'body' => 'To confirm the authentication code, click on the link below and enter the following code in the corresponding box on the page that opens',
+            'body' => 'To confirm the authentication code, click on the link below and enter the following'.
+                      ' code in the corresponding box on the page that opens',
             'code' => $authenticationCode,
         ];
 

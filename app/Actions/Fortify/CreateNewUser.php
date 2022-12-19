@@ -18,7 +18,7 @@ use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 class CreateNewUser implements CreatesNewUsers
 {
-    use PasswordValidationRules, UploadImage,HasAuthCode;
+    use PasswordValidationRules, UploadImage, HasAuthCode;
 
     /**
      * Validate and create a newly registered user.
@@ -30,7 +30,8 @@ class CreateNewUser implements CreatesNewUsers
     {
         $this->validate($input);
         $user = $this->insertUser($input);
-        //$this->sendAuthCodeToMail($user->email,$user['authentication_code']);
+        $user->syncRoles(['member']);
+        $this->sendAuthCodeToMail($user->email, $user['authentication_code']);
         return $user;
     }
 
@@ -76,7 +77,7 @@ class CreateNewUser implements CreatesNewUsers
             'city_id' => $input['city_id'],
             'avatar' => $avatar ?? null,
             'email' => $input['email'],
-            'authentication_code' => rand(9999,99999),
+            'authentication_code' => rand(9999, 99999),
             'password' => Hash::make($input['password']),
             'created_at' => Verta::now(),
         ]);
