@@ -4,22 +4,6 @@
         <div class="topbar">
             <div class="content-topbar container h-100">
                 <div class="left-topbar">
-						<span class="left-topbar-item flex-wr-s-c">
-							<span>
-								New York, NY
-							</span>
-
-							<img class="m-b-1 m-rl-8" src="{{asset('site/images/icons/icon-night.png')}}" alt="IMG">
-
-							<span>
-								HI 58° LO 56°
-							</span>
-						</span>
-
-                    <a href="#" class="left-topbar-item">
-                        About
-                    </a>
-
                     <a href="{{route('panel.home')}}" class="left-topbar-item">
                         Panel
                     </a>
@@ -72,7 +56,7 @@
         <div class="wrap-header-mobile">
             <!-- Logo moblie -->
             <div class="logo-mobile">
-                <a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+                <a href="{{route('home')}}"><img src="{{asset('site/images/icons/logo-01.png')}}" alt="IMG-LOGO"></a>
             </div>
 
             <!-- Button show menu -->
@@ -88,22 +72,10 @@
             <ul class="topbar-mobile">
                 <li class="left-topbar">
 						<span class="left-topbar-item flex-wr-s-c">
-							<span>
-								New York, NY
-							</span>
-
-							<img class="m-b-1 m-rl-8" src="images/icons/icon-night.png" alt="IMG">
-
-							<span>
-								HI 58° LO 56°
-							</span>
 						</span>
                 </li>
 
                 <li class="left-topbar">
-                    <a href="#" class="left-topbar-item">
-                        About
-                    </a>
 
                     <a href="#" class="left-topbar-item">
                         Contact
@@ -204,12 +176,12 @@
         <div class="wrap-logo container">
             <!-- Logo desktop -->
             <div class="logo">
-                <a href="index.html"><img src="images/icons/logo-01.png" alt="LOGO"></a>
+                <a href="{{route('home')}}"><img src="{{asset('site/images/icons/logo-01.png')}}" alt="IMG-LOGO"></a>
             </div>
 
             <!-- Banner -->
             <div class="banner-header">
-                <a href="#"><img src="images/banner-01.jpg" alt="IMG"></a>
+                <a href="{{route('home')}}"><img src="{{asset('site/images/banner-01.jpg')}}" alt="IMG"></a>
             </div>
         </div>
 
